@@ -1,6 +1,15 @@
 import Navbar from "@/components/Navbar";
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Users, Clock, MapPin, Phone } from "lucide-react";
+import { ChevronDown, ChevronUp, Users, Clock, Phone } from "lucide-react";
+
+import hopper from "@/assets/characters/hopper.webp";
+import eleven from "@/assets/characters/eleven.webp";
+import steve from "@/assets/characters/steve.webp";
+import dustin from "@/assets/characters/dustin.webp";
+import max from "@/assets/characters/max.webp";
+import vecna from "@/assets/characters/vecna.webp";
+import nancy from "@/assets/characters/nancy.webp";
+import billy from "@/assets/characters/billy.webp";
 
 type Category = "all" | "technical" | "non-technical";
 
@@ -8,6 +17,7 @@ interface EventData {
   title: string;
   tagline: string;
   category: "technical" | "non-technical";
+  image: string;
   description: string;
   rules: string[];
   judgingCriteria: string[];
@@ -22,23 +32,17 @@ const events: EventData[] = [
     title: "Insight-Ignite",
     tagline: "Research. Present. Impress.",
     category: "technical",
+    image: hopper,
     description:
-      "Paper Presentation is a technical event where participants present their ideas or research on a specific technical topic of their choice using a PowerPoint presentation. The objective is to encourage innovative thinking, technical knowledge sharing, and effective communication skills.",
+      "Paper Presentation is a technical event where participants present their ideas or research on a specific technical topic of their choice using a PowerPoint presentation.",
     rules: [
       "Team Size: Maximum 2 members per team",
-      "Topic: Any specific technical topic allowed. Non-technical topics not permitted.",
+      "Topic: Any specific technical topic allowed",
       "Slides: Maximum 8 slides (including title and conclusion)",
-      "Time Limit: 5 minutes for presentation + 2 minutes for Q&A",
+      "Time Limit: 5 minutes + 2 minutes Q&A",
       "PPT must be submitted before the event begins",
-      "Q&A session will follow",
     ],
-    judgingCriteria: [
-      "Content quality & originality",
-      "Clarity of presentation",
-      "Technical depth & visuals",
-      "Time management & Q&A handling",
-      "Research",
-    ],
+    judgingCriteria: ["Content quality & originality", "Clarity of presentation", "Technical depth & visuals", "Time management & Q&A handling"],
     coordinator: "Chandru - 6382055872",
     time: "10:00 AM - 12:30 PM",
     teamSize: "Max 2",
@@ -47,24 +51,18 @@ const events: EventData[] = [
     title: "Logoverse",
     tagline: "Empathize. Design. Elevate.",
     category: "technical",
+    image: eleven,
     description:
-      "UX/UI Logo Design is a creative technical event where participants design an innovative and meaningful logo using tools such as Canva or Figma. Participants must explain the concept, color psychology, typography, and design elements behind their logo.",
+      "UX/UI Logo Design event where participants design an innovative logo using Canva or Figma and explain concept, color psychology, and typography.",
     rules: [
       "Team Size: Maximum 2 members per team",
-      "Theme: Logo design based on given theme (announced on the spot)",
       "Tools Allowed: Canva, Figma",
-      "Time Limit: 60–90 minutes for design creation",
-      "Presentation: 3–5 minutes explanation of logo concept",
-      "Final logo must be submitted in PNG/PDF format",
+      "Time Limit: 60–90 minutes for design",
+      "Presentation: 3–5 minutes explanation",
+      "Submit in PNG/PDF format",
       "Laptop must be brought",
     ],
-    judgingCriteria: [
-      "Creativity & originality",
-      "Relevance to theme",
-      "Color theory & typography usage",
-      "Visual clarity & branding impact",
-      "Explanation & presentation skills",
-    ],
+    judgingCriteria: ["Creativity & originality", "Relevance to theme", "Color theory & typography", "Branding impact"],
     coordinator: "Gayathiri - 8838484319",
     time: "10:00 AM – 12:30 PM",
     teamSize: "Max 2",
@@ -73,23 +71,17 @@ const events: EventData[] = [
     title: "Prompt-A-Thon",
     tagline: "Craft. Prompt. Create.",
     category: "technical",
+    image: steve,
     description:
-      "Promptathon is an AI-powered website design competition where participants build a complete website using structured prompts within a limited time. Focus is on prompt engineering skills, creativity, website structure planning, and user experience design.",
+      "AI-powered website design competition. Build a complete website using structured prompts with AI builders. No manual coding allowed.",
     rules: [
-      "Team Size: Maximum 2 members per team",
+      "Team Size: Maximum 2 members",
       "Time Limit: 30 minutes",
-      "Tools Allowed: AI Website Builders (Lovable, Canva AI, Bolt, etc.)",
-      "Zero Code Policy: No manual coding allowed",
-      "Prompt Limit: Only 5–7 prompts permitted",
-      "Theme: Fluid Design (or announced on the spot)",
-      "Final website link or exported file must be submitted before deadline",
+      "Tools: Lovable, Canva AI, Bolt, etc.",
+      "Zero Code Policy",
+      "Prompt Limit: 5–7 prompts",
     ],
-    judgingCriteria: [
-      "Prompt efficiency & clarity",
-      "UI design quality",
-      "Design consistency",
-      "Innovation & creativity",
-    ],
+    judgingCriteria: ["Prompt efficiency & clarity", "UI design quality", "Design consistency", "Innovation & creativity"],
     coordinator: "Mohammed Arif - 9092629484",
     teamSize: "Max 2",
   },
@@ -97,23 +89,16 @@ const events: EventData[] = [
     title: "Syntax Surgery",
     tagline: "Trace. Tackle. Triumph.",
     category: "technical",
+    image: dustin,
     description:
-      "Code Debugging – Python is a technical event where participants identify, analyze, and fix errors in given Python programs within a limited time. Tests logical thinking, problem-solving ability, and programming knowledge.",
+      "Code Debugging – Python. Identify, analyze, and fix errors in given Python programs within a limited time.",
     rules: [
-      "Team Size: Individual (1 member)",
+      "Individual participation",
       "Language: Python only",
       "Time Limit: 30–45 minutes",
-      "Participants will be given buggy Python programs",
       "Internet access may be restricted",
-      "Final corrected code must be submitted before deadline",
     ],
-    judgingCriteria: [
-      "Accuracy of debugging",
-      "Logical understanding",
-      "Time management",
-      "Code optimization",
-      "Output correctness",
-    ],
+    judgingCriteria: ["Accuracy of debugging", "Logical understanding", "Time management", "Code optimization"],
     coordinator: "Rubin - 9080672157",
     teamSize: "Individual",
   },
@@ -121,23 +106,17 @@ const events: EventData[] = [
     title: "Adzap",
     tagline: "Act. Advertise. Amaze.",
     category: "non-technical",
+    image: max,
     description:
-      "Adzap – Live Performance is an on-stage advertising competition where participants creatively promote a product, brand, or concept through live acting, skits, role-play, or marketing pitches.",
+      "On-stage advertising competition. Creatively promote a product through live acting, skits, role-play, or marketing pitches.",
     rules: [
-      "Team Size: Maximum 4 members per team",
-      "Time Limit: 5 minutes performance + 2 minutes Q&A",
+      "Team Size: Maximum 4 members",
+      "Time: 5 min performance + 2 min Q&A",
       "Product/Theme: Given on the spot",
-      "Performance Type: Skit / Role-play / Creative Advertisement",
       "Simple props allowed",
-      "Vulgar, offensive, or inappropriate content is strictly prohibited",
+      "No vulgar/offensive content",
     ],
-    judgingCriteria: [
-      "Creativity & originality",
-      "Acting & stage presence",
-      "Marketing strategy & clarity",
-      "Audience engagement",
-      "Time management",
-    ],
+    judgingCriteria: ["Creativity & originality", "Acting & stage presence", "Marketing strategy", "Audience engagement"],
     coordinator: "Balaji - 9566086804",
     teamSize: "Max 4",
   },
@@ -145,23 +124,18 @@ const events: EventData[] = [
     title: "FF Showdown",
     tagline: "Survive. Strategize. Conquer.",
     category: "non-technical",
+    image: vecna,
     description:
-      "Esports – Free Fire Tournament is a competitive gaming event conducted in Garena Free Fire. Teams compete in Battle Royale and Clash Squad modes across multiple stages with group-based eliminations.",
+      "Esports – Free Fire Tournament. Battle Royale and Clash Squad modes across multiple elimination stages.",
     rules: [
-      "Team Size: 4 members per team",
+      "Team Size: 4 members",
       "Total Teams: 25",
       "Registration Fee: ₹100 per player",
-      "Round 1: Battle Royale – Top 16 advance",
-      "Round 2: Clash Squad – Top 8 advance",
-      "Round 3: Semi-Final & Final – Top 2 win prizes",
+      "Round 1: Battle Royale – Top 16",
+      "Round 2: Clash Squad – Top 8",
+      "Round 3: Semi-Final & Final",
     ],
-    judgingCriteria: [
-      "Survival duration",
-      "Kill points",
-      "Team coordination",
-      "Strategy & gameplay",
-      "Overall match performance",
-    ],
+    judgingCriteria: ["Survival duration", "Kill points", "Team coordination", "Strategy & gameplay"],
     coordinator: "Kamalash - 9150474716",
     teamSize: "4 members",
     fee: "₹100/player",
@@ -170,23 +144,16 @@ const events: EventData[] = [
     title: "Mystery Lyrics",
     tagline: "Read. Decode. Reveal.",
     category: "non-technical",
+    image: nancy,
     description:
-      "Mystery Lyrics is a Tamil song-based guessing game. A line from a Tamil song is translated into English and then converted into gibberish words. Participants must identify the original Tamil song from the written gibberish.",
+      "Tamil song-based guessing game. Identify the original Tamil song from gibberish-converted English translations.",
     rules: [
-      "Team Size: 2–3 members per team",
-      "Time Limit: 30–45 seconds per question",
-      "Only one answer allowed per round",
-      "No hints or clues provided",
-      "No mobile phones or external assistance",
-      "Proper discipline must be maintained",
+      "Team Size: 2–3 members",
+      "30–45 seconds per question",
+      "One answer per round",
+      "No mobile phones or external help",
     ],
-    judgingCriteria: [
-      "Accuracy of identification",
-      "Partial points for close answers",
-      "Time management",
-      "Clarity of response",
-      "Rule compliance",
-    ],
+    judgingCriteria: ["Accuracy of identification", "Time management", "Clarity of response", "Rule compliance"],
     time: "10:00 AM – 12:30 PM",
     teamSize: "2-3 members",
   },
@@ -194,22 +161,16 @@ const events: EventData[] = [
     title: "Propezz",
     tagline: "Think. Compete. Conquer.",
     category: "non-technical",
+    image: billy,
     description:
-      "PROPEZZ is an interactive quiz event conducted using the online platform Blooket. Participants answer multiple-choice questions in a fast-paced, gamified environment testing knowledge, speed, and accuracy.",
+      "Interactive quiz event on Blooket. Fast-paced, gamified MCQ environment testing knowledge, speed, and accuracy.",
     rules: [
-      "Team Size: Maximum 2 members per team",
+      "Team Size: Maximum 2 members",
       "Join using provided game code",
-      "Multiple rounds may be conducted",
-      "Final rankings based on cumulative scores",
-      "No unfair means or external assistance",
+      "Multiple rounds",
+      "No unfair means or external help",
     ],
-    judgingCriteria: [
-      "Accuracy of answers",
-      "Speed of response",
-      "Overall game score",
-      "Consistency across rounds",
-      "Rule compliance",
-    ],
+    judgingCriteria: ["Accuracy", "Speed of response", "Overall score", "Consistency across rounds"],
     teamSize: "Max 2",
   },
 ];
@@ -220,18 +181,30 @@ const filters: { label: string; value: Category }[] = [
   { label: "Non-Technical", value: "non-technical" },
 ];
 
-const EventAccordion = ({ event }: { event: EventData }) => {
-  const [open, setOpen] = useState(false);
+const EventCard = ({ event }: { event: EventData }) => {
+  const [expanded, setExpanded] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="rounded-xl border border-border bg-card overflow-hidden transition-all duration-300 hover:border-primary/40">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-5 text-left"
+    <div className="rounded-xl border border-border bg-card overflow-hidden transition-all duration-500 hover:border-primary/40 hover:glow-red">
+      {/* Image section */}
+      <div
+        className="relative aspect-[3/4] overflow-hidden cursor-pointer"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => setExpanded(!expanded)}
       >
-        <div>
+        <img
+          src={event.image}
+          alt={event.title}
+          className={`h-full w-full object-cover transition-transform duration-700 ${hovered ? "scale-110" : "scale-100"}`}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+
+        <div className="absolute top-3 left-3">
           <span
-            className={`inline-block rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider mb-2 ${
+            className={`inline-block rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider ${
               event.category === "technical"
                 ? "bg-primary/20 text-primary border-primary/30"
                 : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
@@ -239,51 +212,59 @@ const EventAccordion = ({ event }: { event: EventData }) => {
           >
             {event.category}
           </span>
-          <h3 className="font-display text-lg font-bold uppercase tracking-wide text-foreground">
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+          <h3 className="font-display text-sm font-bold uppercase tracking-wide text-foreground">
             {event.title}
           </h3>
-          <p className="text-xs text-muted-foreground italic">{event.tagline}</p>
+          <p className="text-[10px] text-muted-foreground italic mt-1">{event.tagline}</p>
         </div>
-        {open ? (
-          <ChevronUp className="w-5 h-5 text-muted-foreground shrink-0" />
-        ) : (
-          <ChevronDown className="w-5 h-5 text-muted-foreground shrink-0" />
-        )}
-      </button>
+      </div>
 
-      {open && (
-        <div className="px-5 pb-5 space-y-4 border-t border-border/50 pt-4">
-          {/* Meta info */}
-          <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
-            {event.teamSize && (
-              <span className="flex items-center gap-1">
-                <Users className="w-3 h-3" /> {event.teamSize}
-              </span>
-            )}
-            {event.time && (
-              <span className="flex items-center gap-1">
-                <Clock className="w-3 h-3" /> {event.time}
-              </span>
-            )}
-            {event.coordinator && (
-              <span className="flex items-center gap-1">
-                <Phone className="w-3 h-3" /> {event.coordinator}
-              </span>
-            )}
-            {event.fee && (
-              <span className="text-primary font-semibold">{event.fee}</span>
-            )}
-          </div>
+      {/* Info bar */}
+      <div className="p-4 space-y-3">
+        <div className="flex flex-wrap gap-2 text-[10px] text-muted-foreground">
+          {event.teamSize && (
+            <span className="flex items-center gap-1">
+              <Users className="w-3 h-3" /> {event.teamSize}
+            </span>
+          )}
+          {event.time && (
+            <span className="flex items-center gap-1">
+              <Clock className="w-3 h-3" /> {event.time}
+            </span>
+          )}
+        </div>
 
-          <p className="text-sm text-muted-foreground leading-relaxed">{event.description}</p>
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="w-full flex items-center justify-center gap-1 rounded-lg border border-primary/30 bg-primary/10 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:glow-red"
+        >
+          {expanded ? "Hide" : "View"} Details
+          {expanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+        </button>
+      </div>
+
+      {/* Expandable details */}
+      {expanded && (
+        <div className="px-4 pb-4 space-y-3 border-t border-border/50 pt-3">
+          {event.coordinator && (
+            <p className="text-xs text-muted-foreground flex items-center gap-1">
+              <Phone className="w-3 h-3 text-primary" /> {event.coordinator}
+            </p>
+          )}
+          {event.fee && (
+            <p className="text-xs font-semibold text-primary">{event.fee}</p>
+          )}
+
+          <p className="text-xs text-muted-foreground leading-relaxed">{event.description}</p>
 
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground mb-2">
-              Rules
-            </h4>
-            <ul className="space-y-1">
+            <h4 className="text-[10px] font-bold uppercase tracking-wider text-foreground mb-1">Rules</h4>
+            <ul className="space-y-0.5">
               {event.rules.map((r, i) => (
-                <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                <li key={i} className="text-[10px] text-muted-foreground flex gap-1.5">
                   <span className="text-primary">•</span> {r}
                 </li>
               ))}
@@ -291,12 +272,10 @@ const EventAccordion = ({ event }: { event: EventData }) => {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground mb-2">
-              Judging Criteria
-            </h4>
-            <ul className="space-y-1">
+            <h4 className="text-[10px] font-bold uppercase tracking-wider text-foreground mb-1">Judging</h4>
+            <ul className="space-y-0.5">
               {event.judgingCriteria.map((c, i) => (
-                <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                <li key={i} className="text-[10px] text-muted-foreground flex gap-1.5">
                   <span className="text-primary">•</span> {c}
                 </li>
               ))}
@@ -310,14 +289,13 @@ const EventAccordion = ({ event }: { event: EventData }) => {
 
 const Events = () => {
   const [activeFilter, setActiveFilter] = useState<Category>("all");
-  const filtered =
-    activeFilter === "all" ? events : events.filter((e) => e.category === activeFilter);
+  const filtered = activeFilter === "all" ? events : events.filter((e) => e.category === activeFilter);
 
   return (
     <div className="min-h-screen">
       <Navbar />
       <section className="pt-28 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center mb-10">
+        <div className="mx-auto max-w-7xl text-center mb-10">
           <h1 className="font-display text-4xl sm:text-5xl font-black uppercase tracking-wider text-foreground text-glow">
             Events
           </h1>
@@ -326,7 +304,7 @@ const Events = () => {
           </p>
         </div>
 
-        <nav className="mx-auto max-w-3xl flex flex-wrap justify-center gap-2 mb-10">
+        <nav className="mx-auto max-w-7xl flex flex-wrap justify-center gap-2 mb-10">
           {filters.map((f) => (
             <button
               key={f.value}
@@ -342,9 +320,9 @@ const Events = () => {
           ))}
         </nav>
 
-        <div className="mx-auto max-w-3xl space-y-4">
+        <div className="mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {filtered.map((event) => (
-            <EventAccordion key={event.title} event={event} />
+            <EventCard key={event.title} event={event} />
           ))}
         </div>
       </section>

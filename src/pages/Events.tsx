@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
-import { useState } from "react";
-import { ChevronDown, ChevronUp, Users, Clock, Phone } from "lucide-react";
+import { useState, useCallback } from "react";
+import { Users, Clock, Phone, X, Zap } from "lucide-react";
 
 import hopper from "@/assets/characters/hopper.webp";
 import eleven from "@/assets/characters/eleven.webp";
@@ -33,16 +33,9 @@ const events: EventData[] = [
     tagline: "Research. Present. Impress.",
     category: "technical",
     image: hopper,
-    description:
-      "Paper Presentation is a technical event where participants present their ideas or research on a specific technical topic of their choice using a PowerPoint presentation.",
-    rules: [
-      "Team Size: Maximum 2 members per team",
-      "Topic: Any specific technical topic allowed",
-      "Slides: Maximum 8 slides (including title and conclusion)",
-      "Time Limit: 5 minutes + 2 minutes Q&A",
-      "PPT must be submitted before the event begins",
-    ],
-    judgingCriteria: ["Content quality & originality", "Clarity of presentation", "Technical depth & visuals", "Time management & Q&A handling"],
+    description: "Paper Presentation is a technical event where participants present their ideas or research on a specific technical topic using a PowerPoint presentation.",
+    rules: ["Max 2 members per team", "Any technical topic allowed", "Max 8 slides", "5 min presentation + 2 min Q&A", "PPT submitted before event"],
+    judgingCriteria: ["Content quality & originality", "Clarity of presentation", "Technical depth & visuals", "Time management"],
     coordinator: "Chandru - 6382055872",
     time: "10:00 AM - 12:30 PM",
     teamSize: "Max 2",
@@ -52,16 +45,8 @@ const events: EventData[] = [
     tagline: "Empathize. Design. Elevate.",
     category: "technical",
     image: eleven,
-    description:
-      "UX/UI Logo Design event where participants design an innovative logo using Canva or Figma and explain concept, color psychology, and typography.",
-    rules: [
-      "Team Size: Maximum 2 members per team",
-      "Tools Allowed: Canva, Figma",
-      "Time Limit: 60–90 minutes for design",
-      "Presentation: 3–5 minutes explanation",
-      "Submit in PNG/PDF format",
-      "Laptop must be brought",
-    ],
+    description: "UX/UI Logo Design event where participants design an innovative logo using Canva or Figma and explain concept, color psychology, and typography.",
+    rules: ["Max 2 members per team", "Tools: Canva, Figma", "60–90 min for design", "3–5 min explanation", "Submit PNG/PDF", "Bring laptop"],
     judgingCriteria: ["Creativity & originality", "Relevance to theme", "Color theory & typography", "Branding impact"],
     coordinator: "Gayathiri - 8838484319",
     time: "10:00 AM – 12:30 PM",
@@ -72,16 +57,9 @@ const events: EventData[] = [
     tagline: "Craft. Prompt. Create.",
     category: "technical",
     image: steve,
-    description:
-      "AI-powered website design competition. Build a complete website using structured prompts with AI builders. No manual coding allowed.",
-    rules: [
-      "Team Size: Maximum 2 members",
-      "Time Limit: 30 minutes",
-      "Tools: Lovable, Canva AI, Bolt, etc.",
-      "Zero Code Policy",
-      "Prompt Limit: 5–7 prompts",
-    ],
-    judgingCriteria: ["Prompt efficiency & clarity", "UI design quality", "Design consistency", "Innovation & creativity"],
+    description: "AI-powered website design competition. Build a complete website using structured prompts with AI builders. No manual coding allowed.",
+    rules: ["Max 2 members", "30 min time limit", "Tools: Lovable, Canva AI, Bolt", "Zero Code Policy", "5–7 prompts only"],
+    judgingCriteria: ["Prompt efficiency", "UI design quality", "Design consistency", "Innovation"],
     coordinator: "Mohammed Arif - 9092629484",
     teamSize: "Max 2",
   },
@@ -90,15 +68,9 @@ const events: EventData[] = [
     tagline: "Trace. Tackle. Triumph.",
     category: "technical",
     image: dustin,
-    description:
-      "Code Debugging – Python. Identify, analyze, and fix errors in given Python programs within a limited time.",
-    rules: [
-      "Individual participation",
-      "Language: Python only",
-      "Time Limit: 30–45 minutes",
-      "Internet access may be restricted",
-    ],
-    judgingCriteria: ["Accuracy of debugging", "Logical understanding", "Time management", "Code optimization"],
+    description: "Code Debugging – Python. Identify, analyze, and fix errors in given Python programs within a limited time.",
+    rules: ["Individual only", "Python only", "30–45 min", "Internet may be restricted"],
+    judgingCriteria: ["Accuracy", "Logical understanding", "Time management", "Code optimization"],
     coordinator: "Rubin - 9080672157",
     teamSize: "Individual",
   },
@@ -107,16 +79,9 @@ const events: EventData[] = [
     tagline: "Act. Advertise. Amaze.",
     category: "non-technical",
     image: max,
-    description:
-      "On-stage advertising competition. Creatively promote a product through live acting, skits, role-play, or marketing pitches.",
-    rules: [
-      "Team Size: Maximum 4 members",
-      "Time: 5 min performance + 2 min Q&A",
-      "Product/Theme: Given on the spot",
-      "Simple props allowed",
-      "No vulgar/offensive content",
-    ],
-    judgingCriteria: ["Creativity & originality", "Acting & stage presence", "Marketing strategy", "Audience engagement"],
+    description: "On-stage advertising competition. Creatively promote a product through live acting, skits, role-play, or marketing pitches.",
+    rules: ["Max 4 members", "5 min performance + 2 min Q&A", "Theme given on spot", "Simple props allowed", "No vulgar content"],
+    judgingCriteria: ["Creativity", "Stage presence", "Marketing strategy", "Audience engagement"],
     coordinator: "Balaji - 9566086804",
     teamSize: "Max 4",
   },
@@ -125,17 +90,9 @@ const events: EventData[] = [
     tagline: "Survive. Strategize. Conquer.",
     category: "non-technical",
     image: vecna,
-    description:
-      "Esports – Free Fire Tournament. Battle Royale and Clash Squad modes across multiple elimination stages.",
-    rules: [
-      "Team Size: 4 members",
-      "Total Teams: 25",
-      "Registration Fee: ₹100 per player",
-      "Round 1: Battle Royale – Top 16",
-      "Round 2: Clash Squad – Top 8",
-      "Round 3: Semi-Final & Final",
-    ],
-    judgingCriteria: ["Survival duration", "Kill points", "Team coordination", "Strategy & gameplay"],
+    description: "Esports – Free Fire Tournament. Battle Royale and Clash Squad modes across multiple elimination stages.",
+    rules: ["4 members per team", "25 teams max", "₹100 per player", "3 rounds: BR → CS → Finals"],
+    judgingCriteria: ["Survival duration", "Kill points", "Team coordination", "Strategy"],
     coordinator: "Kamalash - 9150474716",
     teamSize: "4 members",
     fee: "₹100/player",
@@ -145,15 +102,9 @@ const events: EventData[] = [
     tagline: "Read. Decode. Reveal.",
     category: "non-technical",
     image: nancy,
-    description:
-      "Tamil song-based guessing game. Identify the original Tamil song from gibberish-converted English translations.",
-    rules: [
-      "Team Size: 2–3 members",
-      "30–45 seconds per question",
-      "One answer per round",
-      "No mobile phones or external help",
-    ],
-    judgingCriteria: ["Accuracy of identification", "Time management", "Clarity of response", "Rule compliance"],
+    description: "Tamil song-based guessing game. Identify the original Tamil song from gibberish-converted English translations.",
+    rules: ["2–3 members per team", "30–45 sec per question", "One answer per round", "No phones"],
+    judgingCriteria: ["Accuracy", "Time management", "Clarity of response", "Rule compliance"],
     time: "10:00 AM – 12:30 PM",
     teamSize: "2-3 members",
   },
@@ -162,15 +113,9 @@ const events: EventData[] = [
     tagline: "Think. Compete. Conquer.",
     category: "non-technical",
     image: billy,
-    description:
-      "Interactive quiz event on Blooket. Fast-paced, gamified MCQ environment testing knowledge, speed, and accuracy.",
-    rules: [
-      "Team Size: Maximum 2 members",
-      "Join using provided game code",
-      "Multiple rounds",
-      "No unfair means or external help",
-    ],
-    judgingCriteria: ["Accuracy", "Speed of response", "Overall score", "Consistency across rounds"],
+    description: "Interactive quiz event on Blooket. Fast-paced, gamified MCQ environment testing knowledge, speed, and accuracy.",
+    rules: ["Max 2 members", "Join via game code", "Multiple rounds", "No external help"],
+    judgingCriteria: ["Accuracy", "Speed", "Overall score", "Consistency"],
     teamSize: "Max 2",
   },
 ];
@@ -181,126 +126,250 @@ const filters: { label: string; value: Category }[] = [
   { label: "Non-Technical", value: "non-technical" },
 ];
 
-const EventCard = ({ event }: { event: EventData }) => {
-  const [expanded, setExpanded] = useState(false);
-  const [hovered, setHovered] = useState(false);
-
+/* ───────── Lightning Flash Overlay ───────── */
+const LightningFlash = ({ active }: { active: boolean }) => {
+  if (!active) return null;
   return (
-    <div className="rounded-xl border border-border bg-card overflow-hidden transition-all duration-500 hover:border-primary/40 hover:glow-red">
-      {/* Image section */}
+    <div className="fixed inset-0 z-[100] pointer-events-none lightning-flash bg-white/90 mix-blend-overlay" />
+  );
+};
+
+/* ───────── Event Detail Modal ───────── */
+const EventModal = ({ event, onClose }: { event: EventData; onClose: () => void }) => {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-md animate-backdrop-in" />
+
+      {/* Modal */}
       <div
-        className="relative aspect-[3/4] overflow-hidden cursor-pointer"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        onClick={() => setExpanded(!expanded)}
+        className="relative z-10 w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl border border-primary/30 bg-card glow-red-strong animate-modal-in"
+        onClick={(e) => e.stopPropagation()}
       >
-        <img
-          src={event.image}
-          alt={event.title}
-          className={`h-full w-full object-cover transition-transform duration-700 ${hovered ? "scale-110" : "scale-100"}`}
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
-
-        <div className="absolute top-3 left-3">
-          <span
-            className={`inline-block rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider ${
-              event.category === "technical"
-                ? "bg-primary/20 text-primary border-primary/30"
-                : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
-            }`}
+        {/* Header image */}
+        <div className="relative h-48 overflow-hidden rounded-t-2xl">
+          <img src={event.image} alt={event.title} className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent" />
+          <button
+            onClick={onClose}
+            className="absolute top-3 right-3 rounded-full bg-card/80 backdrop-blur p-2 text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
           >
-            {event.category}
-          </span>
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 p-4">
-          <h3 className="font-display text-sm font-bold uppercase tracking-wide text-foreground">
-            {event.title}
-          </h3>
-          <p className="text-[10px] text-muted-foreground italic mt-1">{event.tagline}</p>
-        </div>
-      </div>
-
-      {/* Info bar */}
-      <div className="p-4 space-y-3">
-        <div className="flex flex-wrap gap-2 text-[10px] text-muted-foreground">
-          {event.teamSize && (
-            <span className="flex items-center gap-1">
-              <Users className="w-3 h-3" /> {event.teamSize}
+            <X className="w-4 h-4" />
+          </button>
+          <div className="absolute bottom-4 left-4">
+            <span
+              className={`inline-block rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider mb-2 ${
+                event.category === "technical"
+                  ? "bg-primary/20 text-primary border-primary/30"
+                  : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+              }`}
+            >
+              {event.category}
             </span>
-          )}
-          {event.time && (
-            <span className="flex items-center gap-1">
-              <Clock className="w-3 h-3" /> {event.time}
-            </span>
-          )}
+            <h2 className="font-display text-xl font-black uppercase tracking-wider text-foreground text-glow">
+              {event.title}
+            </h2>
+            <p className="text-xs text-muted-foreground italic">{event.tagline}</p>
+          </div>
         </div>
 
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="w-full flex items-center justify-center gap-1 rounded-lg border border-primary/30 bg-primary/10 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:glow-red"
-        >
-          {expanded ? "Hide" : "View"} Details
-          {expanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-        </button>
-      </div>
+        {/* Body */}
+        <div className="p-5 space-y-4">
+          {/* Meta */}
+          <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
+            {event.teamSize && (
+              <span className="flex items-center gap-1 rounded-full bg-secondary px-3 py-1">
+                <Users className="w-3 h-3" /> {event.teamSize}
+              </span>
+            )}
+            {event.time && (
+              <span className="flex items-center gap-1 rounded-full bg-secondary px-3 py-1">
+                <Clock className="w-3 h-3" /> {event.time}
+              </span>
+            )}
+            {event.coordinator && (
+              <span className="flex items-center gap-1 rounded-full bg-secondary px-3 py-1">
+                <Phone className="w-3 h-3" /> {event.coordinator}
+              </span>
+            )}
+            {event.fee && (
+              <span className="rounded-full bg-primary/20 text-primary px-3 py-1 font-semibold">
+                {event.fee}
+              </span>
+            )}
+          </div>
 
-      {/* Expandable details */}
-      {expanded && (
-        <div className="px-4 pb-4 space-y-3 border-t border-border/50 pt-3">
-          {event.coordinator && (
-            <p className="text-xs text-muted-foreground flex items-center gap-1">
-              <Phone className="w-3 h-3 text-primary" /> {event.coordinator}
-            </p>
-          )}
-          {event.fee && (
-            <p className="text-xs font-semibold text-primary">{event.fee}</p>
-          )}
-
-          <p className="text-xs text-muted-foreground leading-relaxed">{event.description}</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">{event.description}</p>
 
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-wider text-foreground mb-1">Rules</h4>
-            <ul className="space-y-0.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground mb-2 flex items-center gap-1">
+              <Zap className="w-3 h-3 text-primary" /> Rules
+            </h4>
+            <ul className="space-y-1">
               {event.rules.map((r, i) => (
-                <li key={i} className="text-[10px] text-muted-foreground flex gap-1.5">
-                  <span className="text-primary">•</span> {r}
+                <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                  <span className="text-primary font-bold">›</span> {r}
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-[10px] font-bold uppercase tracking-wider text-foreground mb-1">Judging</h4>
-            <ul className="space-y-0.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground mb-2 flex items-center gap-1">
+              <Zap className="w-3 h-3 text-primary" /> Judging Criteria
+            </h4>
+            <ul className="space-y-1">
               {event.judgingCriteria.map((c, i) => (
-                <li key={i} className="text-[10px] text-muted-foreground flex gap-1.5">
-                  <span className="text-primary">•</span> {c}
+                <li key={i} className="text-xs text-muted-foreground flex gap-2">
+                  <span className="text-primary font-bold">›</span> {c}
                 </li>
               ))}
             </ul>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
+/* ───────── Flip Event Card ───────── */
+const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventData) => void }) => {
+  const [flipped, setFlipped] = useState(false);
+  const [lightning, setLightning] = useState(false);
+
+  const handleFlip = useCallback(() => {
+    setLightning(true);
+    setTimeout(() => setLightning(false), 600);
+    setFlipped((f) => !f);
+  }, []);
+
+  return (
+    <>
+      <LightningFlash active={lightning} />
+      <div className="perspective cursor-pointer" style={{ height: 420 }} onClick={handleFlip}>
+        <div className={`flip-card-inner ${flipped ? "flipped" : ""}`}>
+          {/* ── FRONT ── */}
+          <div className="flip-card-front rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:glow-red transition-all duration-300">
+            <div className="relative h-full w-full overflow-hidden group">
+              <img
+                src={event.image}
+                alt={event.title}
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+
+              <div className="absolute top-3 left-3">
+                <span
+                  className={`inline-block rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider ${
+                    event.category === "technical"
+                      ? "bg-primary/20 text-primary border-primary/30"
+                      : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                  }`}
+                >
+                  {event.category}
+                </span>
+              </div>
+
+              {/* Tap hint */}
+              <div className="absolute top-3 right-3 rounded-full bg-card/60 backdrop-blur px-2 py-1 text-[9px] text-muted-foreground uppercase tracking-wider flex items-center gap-1">
+                <Zap className="w-3 h-3 text-primary" /> Flip
+              </div>
+
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <h3 className="font-display text-sm font-bold uppercase tracking-wide text-foreground text-glow">
+                  {event.title}
+                </h3>
+                <p className="text-[10px] text-muted-foreground italic mt-1">{event.tagline}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* ── BACK ── */}
+          <div className="flip-card-back rounded-xl border border-primary/30 bg-card overflow-hidden glow-red">
+            <div className="h-full flex flex-col p-5">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-display text-sm font-bold uppercase tracking-wide text-primary text-glow">
+                  {event.title}
+                </h3>
+                <span
+                  className={`inline-block rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider ${
+                    event.category === "technical"
+                      ? "bg-primary/20 text-primary border-primary/30"
+                      : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                  }`}
+                >
+                  {event.category}
+                </span>
+              </div>
+
+              <p className="text-[11px] text-muted-foreground leading-relaxed mb-3 line-clamp-3">
+                {event.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2 text-[10px] text-muted-foreground mb-3">
+                {event.teamSize && (
+                  <span className="flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5">
+                    <Users className="w-3 h-3" /> {event.teamSize}
+                  </span>
+                )}
+                {event.time && (
+                  <span className="flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5">
+                    <Clock className="w-3 h-3" /> {event.time}
+                  </span>
+                )}
+              </div>
+
+              {event.coordinator && (
+                <p className="text-[10px] text-muted-foreground flex items-center gap-1 mb-3">
+                  <Phone className="w-3 h-3 text-primary" /> {event.coordinator}
+                </p>
+              )}
+
+              <div className="mt-auto space-y-2">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelect(event);
+                  }}
+                  className="w-full rounded-lg bg-primary py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-all hover:glow-red-strong hover:scale-[1.02]"
+                >
+                  View Full Details
+                </button>
+                <p className="text-center text-[9px] text-muted-foreground uppercase tracking-wider">
+                  Click card to flip back
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+/* ───────── Events Page ───────── */
 const Events = () => {
   const [activeFilter, setActiveFilter] = useState<Category>("all");
+  const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
   const filtered = activeFilter === "all" ? events : events.filter((e) => e.category === activeFilter);
 
   return (
     <div className="min-h-screen">
       <Navbar />
+
+      {/* Modal */}
+      {selectedEvent && (
+        <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
+      )}
+
       <section className="pt-28 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center mb-10">
           <h1 className="font-display text-4xl sm:text-5xl font-black uppercase tracking-wider text-foreground text-glow">
             Events
           </h1>
           <p className="mt-3 text-muted-foreground text-sm">
-            Explore our Technical & Non-Technical events
+            Click a card to flip it ⚡ — then view full details
           </p>
         </div>
 
@@ -322,7 +391,7 @@ const Events = () => {
 
         <div className="mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {filtered.map((event) => (
-            <EventCard key={event.title} event={event} />
+            <EventCard key={event.title} event={event} onSelect={setSelectedEvent} />
           ))}
         </div>
       </section>

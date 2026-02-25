@@ -1,20 +1,19 @@
 import CountdownTimer from "@/components/CountdownTimer";
 import Navbar from "@/components/Navbar";
+import UpsideDownBackground from "@/components/UpsideDownBackground";
 import { Link } from "react-router-dom";
 import { ArrowRight, Flame } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative flex flex-col items-center justify-center min-h-screen px-4 text-center pt-20">
-        {/* Decorative bg */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
-        </div>
+      {/* Upside Down Background */}
+      <UpsideDownBackground />
 
+      {/* Hero */}
+      <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center pt-20">
         <div className="relative z-10 space-y-8 max-w-3xl mx-auto">
           <div className="flex items-center justify-center gap-2 text-primary">
             <Flame className="w-5 h-5 animate-pulse" />

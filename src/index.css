@@ -126,4 +126,24 @@
   .animate-backdrop-in {
     animation: backdrop-in 0.3s ease-out forwards;
   }
+
+  /* Lightning bolt SVG paths */
+  @keyframes bolt-strike {
+    0% { opacity: 0; stroke-dashoffset: 300; }
+    10% { opacity: 1; }
+    30% { stroke-dashoffset: 0; }
+    50% { opacity: 1; }
+    60% { opacity: 0.3; }
+    70% { opacity: 0.9; }
+    80% { opacity: 0.2; }
+    100% { opacity: 0; stroke-dashoffset: 0; }
+  }
+  .lightning-bolt-path {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: bolt-strike 0.8s ease-out forwards;
+  }
+  .lightning-bolts-svg {
+    filter: drop-shadow(0 0 8px hsla(200, 100%, 80%, 0.8));
+  }
 }

@@ -88,8 +88,8 @@ const LightningBolts = ({ active }: { active: boolean }) => {
             key={`glow-${i}`}
             d={d}
             fill="none"
-            stroke="hsla(210, 100%, 85%, 0.3)"
-            strokeWidth="3"
+            stroke="hsla(0, 85%, 50%, 0.4)"
+            strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
             filter="url(#bolt-glow-wide)"
@@ -104,8 +104,8 @@ const LightningBolts = ({ active }: { active: boolean }) => {
             key={`core-${i}`}
             d={d}
             fill="none"
-            stroke="hsla(0, 0%, 100%, 0.95)"
-            strokeWidth="1.2"
+            stroke="hsla(0, 100%, 65%, 0.95)"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
             filter="url(#bolt-glow)"
@@ -120,8 +120,8 @@ const LightningBolts = ({ active }: { active: boolean }) => {
             key={`hot-${i}`}
             d={d}
             fill="none"
-            stroke="hsla(200, 100%, 95%, 1)"
-            strokeWidth="0.5"
+            stroke="hsla(0, 100%, 80%, 1)"
+            strokeWidth="0.6"
             strokeLinecap="round"
             strokeLinejoin="round"
             className="lightning-bolt-path"
@@ -130,8 +130,8 @@ const LightningBolts = ({ active }: { active: boolean }) => {
         ))}
       </svg>
 
-      {/* Flash overlay on card */}
-      <div className="absolute inset-0 bg-white/20 lightning-flash rounded-xl" />
+      {/* Flash overlay on card - red tinted */}
+      <div className="absolute inset-0 bg-red-500/15 lightning-flash rounded-xl" />
     </div>
   );
 };

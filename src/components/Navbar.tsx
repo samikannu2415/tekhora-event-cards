@@ -1,39 +1,34 @@
-import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Home", path: "/" },
-  { label: "About", path: "/about" },
-  { label: "Events", path: "/events" },
-  { label: "Contact", path: "/contact" },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Events", href: "#events" },
+  { label: "Register", href: "#register" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
-  const location = useLocation();
   const [open, setOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto max-w-7xl flex items-center justify-between px-4 py-3 sm:px-6">
-        <Link to="/" className="font-display text-lg sm:text-xl font-black uppercase tracking-wider text-primary text-glow">
+        <a href="#home" className="font-display text-lg sm:text-xl font-black uppercase tracking-wider text-primary text-glow">
           Zen-IT-Trix 1.0
-        </Link>
+        </a>
 
         {/* Desktop */}
         <div className="hidden md:flex gap-1">
           {navLinks.map((l) => (
-            <Link
-              key={l.path}
-              to={l.path}
-              className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
-                location.pathname === l.path
-                  ? "bg-primary text-primary-foreground glow-red"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
+            <a
+              key={l.href}
+              href={l.href}
+              className="rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 text-muted-foreground hover:text-foreground"
             >
               {l.label}
-            </Link>
+            </a>
           ))}
         </div>
 
@@ -47,18 +42,14 @@ const Navbar = () => {
       {open && (
         <div className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl px-4 py-4 space-y-2">
           {navLinks.map((l) => (
-            <Link
-              key={l.path}
-              to={l.path}
+            <a
+              key={l.href}
+              href={l.href}
               onClick={() => setOpen(false)}
-              className={`block rounded-lg px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-all ${
-                location.pathname === l.path
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-card"
-              }`}
+              className="block rounded-lg px-4 py-3 text-sm font-semibold uppercase tracking-wider transition-all text-muted-foreground hover:text-foreground hover:bg-card"
             >
               {l.label}
-            </Link>
+            </a>
           ))}
         </div>
       )}

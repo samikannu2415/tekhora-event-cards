@@ -131,7 +131,7 @@ const filters: { label: string; value: Category }[] = [
 const LightningFlash = ({ active }: { active: boolean }) => {
   if (!active) return null;
   return (
-    <div className="fixed inset-0 z-[100] pointer-events-none lightning-flash bg-white/70 mix-blend-overlay" />
+    <div className="fixed inset-0 z-[100] pointer-events-none lightning-flash mix-blend-overlay" style={{ background: "hsla(0, 85%, 45%, 0.5)" }} />
   );
 };
 

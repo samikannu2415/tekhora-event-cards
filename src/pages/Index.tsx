@@ -36,10 +36,16 @@ const Index = () => {
 
           <div className="flex flex-wrap gap-4 justify-center pt-4">
             <Link
-              to="/events"
+              to="/register"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-all hover:glow-red-strong hover:scale-105"
             >
-              Explore Events <ArrowRight className="w-4 h-4" />
+              Register Now <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              to="/events"
+              className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-8 py-3 text-sm font-bold uppercase tracking-wider text-primary transition-all hover:bg-primary/20 hover:scale-105"
+            >
+              Explore Events
             </Link>
             <Link
               to="/about"

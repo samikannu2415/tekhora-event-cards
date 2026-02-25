@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import LightningBolts from "@/components/LightningBolts";
 import { useState, useCallback } from "react";
 import { Users, Clock, Phone, X, Zap } from "lucide-react";
 
@@ -126,11 +127,11 @@ const filters: { label: string; value: Category }[] = [
   { label: "Non-Technical", value: "non-technical" },
 ];
 
-/* ───────── Lightning Flash Overlay ───────── */
+/* ───────── Lightning Flash Overlay (full screen) ───────── */
 const LightningFlash = ({ active }: { active: boolean }) => {
   if (!active) return null;
   return (
-    <div className="fixed inset-0 z-[100] pointer-events-none lightning-flash bg-white/90 mix-blend-overlay" />
+    <div className="fixed inset-0 z-[100] pointer-events-none lightning-flash bg-white/70 mix-blend-overlay" />
   );
 };
 
@@ -236,17 +237,21 @@ const EventModal = ({ event, onClose }: { event: EventData; onClose: () => void 
 const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventData) => void }) => {
   const [flipped, setFlipped] = useState(false);
   const [lightning, setLightning] = useState(false);
+  const [boltsKey, setBoltsKey] = useState(0);
 
   const handleFlip = useCallback(() => {
     setLightning(true);
-    setTimeout(() => setLightning(false), 600);
+    setBoltsKey((k) => k + 1);
+    setTimeout(() => setLightning(false), 800);
     setFlipped((f) => !f);
   }, []);
 
   return (
     <>
       <LightningFlash active={lightning} />
-      <div className="perspective cursor-pointer" style={{ height: 420 }} onClick={handleFlip}>
+      <div className="perspective cursor-pointer relative" style={{ height: 420 }} onClick={handleFlip}>
+        {/* Lightning bolts over card */}
+        <LightningBolts key={boltsKey} active={lightning} />
         <div className={`flip-card-inner ${flipped ? "flipped" : ""}`}>
           {/* ── FRONT ── */}
           <div className="flip-card-front rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:glow-red transition-all duration-300">

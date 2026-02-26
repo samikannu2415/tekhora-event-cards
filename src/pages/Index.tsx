@@ -7,15 +7,15 @@ import logo from "@/assets/logo.png";
 
 const coordinators = {
   technical: [
-    { event: "Insight-Ignite", name: "Chandru", phone: "6382055872" },
-    { event: "Logoverse", name: "Gayathiri", phone: "8838484319" },
-    { event: "Prompt-A-Thon", name: "Mohammed Arif", phone: "9092629484" },
-    { event: "Syntax Surgery", name: "Rubin", phone: "9080672157" },
-  ],
+  { event: "Insight-Ignite", name: "Chandru", phone: "6382055872" },
+  { event: "Logoverse", name: "Gayathiri", phone: "8838484319" },
+  { event: "Prompt-A-Thon", name: "Mohammed Arif", phone: "9092629484" },
+  { event: "Syntax Surgery", name: "Rubin", phone: "9080672157" }],
+
   nonTechnical: [
-    { event: "Adzap", name: "Balaji", phone: "9566086804" },
-    { event: "FF Showdown", name: "Kamalash", phone: "9150474716" },
-  ],
+  { event: "Adzap", name: "Balaji", phone: "9566086804" },
+  { event: "FF Showdown", name: "Kamalash", phone: "9150474716" }]
+
 };
 
 const Index = () => {
@@ -30,8 +30,8 @@ const Index = () => {
           <img
             src={logo}
             alt="Zen-IT-Trix Logo"
-            className="w-32 h-32 sm:w-40 sm:h-40 mx-auto drop-shadow-[0_0_25px_hsla(0,85%,50%,0.5)] invert brightness-200"
-          />
+            className="w-32 h-32 sm:w-40 sm:h-40 mx-auto drop-shadow-[0_0_25px_hsla(0,85%,50%,0.5)] invert brightness-200" />
+
 
           <div className="flex items-center justify-center gap-2 text-primary">
             <Flame className="w-5 h-5 animate-pulse" />
@@ -41,28 +41,28 @@ const Index = () => {
             <Flame className="w-5 h-5 animate-pulse" />
           </div>
 
-          <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-wider text-foreground text-glow leading-tight">
-            Zen-IT-Trix
-            <span className="block text-primary text-3xl sm:text-5xl lg:text-6xl mt-2">1.0</span>
+          <h1 className="font-display text-5xl sm:text-7xl font-black uppercase tracking-wider text-foreground text-glow leading-tight lg:text-7xl">
+
+ZEN-IT-TRIX 1.O
+
+            <span className="block text-primary text-3xl sm:text-5xl lg:text-6xl mt-2">
+            </span>
           </h1>
 
-          <p className="text-muted-foreground text-sm sm:text-base tracking-wide max-w-xl mx-auto">
-            The Inaugural Intercollegiate Technical Symposium — February 20, 2026
+          <p className="text-muted-foreground text-sm sm:text-base tracking-wide max-w-xl mx-auto">DEPARTMENT OF INFORMATION TECHNOLOGY
+
           </p>
 
           <CountdownTimer />
 
           <div className="flex flex-wrap gap-4 justify-center pt-4">
-            <a
-              href="#events"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-all hover:glow-red-strong hover:scale-105"
-            >
+            <a href="#events" className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-all hover:glow-red-strong hover:scale-105">
+
               Explore Events
             </a>
-            <a
-              href="#about"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-3 text-sm font-bold uppercase tracking-wider text-foreground transition-all hover:border-primary/40 hover:text-primary"
-            >
+            <a href="#about"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-3 text-sm font-bold uppercase tracking-wider text-foreground transition-all hover:border-primary/40 hover:text-primary">
+
               Learn More
             </a>
           </div>
@@ -107,30 +107,30 @@ const Index = () => {
         <div className="mx-auto max-w-3xl grid gap-8 sm:grid-cols-2">
           <div className="rounded-xl border border-border bg-card p-6 space-y-4">
             <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Technical Events</h3>
-            {coordinators.technical.map((c) => (
-              <div key={c.event} className="space-y-1">
+            {coordinators.technical.map((c) =>
+            <div key={c.event} className="space-y-1">
                 <p className="text-sm font-semibold text-foreground">{c.event}</p>
                 <p className="text-xs text-muted-foreground flex items-center gap-1">
                   <Phone className="w-3 h-3" /> {c.name} – {c.phone}
                 </p>
               </div>
-            ))}
+            )}
           </div>
           <div className="rounded-xl border border-border bg-card p-6 space-y-4">
             <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Non-Technical Events</h3>
-            {coordinators.nonTechnical.map((c) => (
-              <div key={c.event} className="space-y-1">
+            {coordinators.nonTechnical.map((c) =>
+            <div key={c.event} className="space-y-1">
                 <p className="text-sm font-semibold text-foreground">{c.event}</p>
                 <p className="text-xs text-muted-foreground flex items-center gap-1">
                   <Phone className="w-3 h-3" /> {c.name} – {c.phone}
                 </p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 };
 
 export default Index;

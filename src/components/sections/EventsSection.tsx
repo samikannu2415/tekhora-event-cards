@@ -1,6 +1,6 @@
 import LightningBolts from "@/components/LightningBolts";
 import { useState, useCallback } from "react";
-import { Users, Clock, Phone, X, Zap } from "lucide-react";
+import { Users, Clock, Phone, X, Zap, ExternalLink } from "lucide-react";
 
 import hopper from "@/assets/characters/hopper.webp";
 import eleven from "@/assets/characters/eleven.webp";
@@ -25,6 +25,7 @@ interface EventData {
   time?: string;
   teamSize?: string;
   fee?: string;
+  registerLink: string;
 }
 
 const events: EventData[] = [
@@ -39,6 +40,7 @@ const events: EventData[] = [
     coordinator: "Chandru - 6382055872",
     time: "10:00 AM - 12:30 PM",
     teamSize: "Max 2",
+    registerLink: "https://forms.google.com/your-form-link",
   },
   {
     title: "Logoverse",
@@ -51,6 +53,7 @@ const events: EventData[] = [
     coordinator: "Gayathiri - 8838484319",
     time: "10:00 AM – 12:30 PM",
     teamSize: "Max 2",
+    registerLink: "https://forms.google.com/your-form-link",
   },
   {
     title: "Prompt-A-Thon",
@@ -62,6 +65,7 @@ const events: EventData[] = [
     judgingCriteria: ["Prompt efficiency", "UI design quality", "Design consistency", "Innovation"],
     coordinator: "Mohammed Arif - 9092629484",
     teamSize: "Max 2",
+    registerLink: "https://forms.google.com/your-form-link",
   },
   {
     title: "Syntax Surgery",
@@ -73,6 +77,7 @@ const events: EventData[] = [
     judgingCriteria: ["Accuracy", "Logical understanding", "Time management", "Code optimization"],
     coordinator: "Rubin - 9080672157",
     teamSize: "Individual",
+    registerLink: "https://forms.google.com/your-form-link",
   },
   {
     title: "Adzap",
@@ -84,6 +89,7 @@ const events: EventData[] = [
     judgingCriteria: ["Creativity", "Stage presence", "Marketing strategy", "Audience engagement"],
     coordinator: "Balaji - 9566086804",
     teamSize: "Max 4",
+    registerLink: "https://forms.google.com/your-form-link",
   },
   {
     title: "FF Showdown",
@@ -96,6 +102,7 @@ const events: EventData[] = [
     coordinator: "Kamalash - 9150474716",
     teamSize: "4 members",
     fee: "₹100/player",
+    registerLink: "https://forms.google.com/your-form-link",
   },
   {
     title: "Mystery Lyrics",
@@ -107,6 +114,7 @@ const events: EventData[] = [
     judgingCriteria: ["Accuracy", "Time management", "Clarity of response", "Rule compliance"],
     time: "10:00 AM – 12:30 PM",
     teamSize: "2-3 members",
+    registerLink: "https://forms.google.com/your-form-link",
   },
   {
     title: "Propezz",
@@ -117,6 +125,7 @@ const events: EventData[] = [
     rules: ["Max 2 members", "Join via game code", "Multiple rounds", "No external help"],
     judgingCriteria: ["Accuracy", "Speed", "Overall score", "Consistency"],
     teamSize: "Max 2",
+    registerLink: "https://forms.google.com/your-form-link",
   },
 ];
 
@@ -169,6 +178,9 @@ const EventModal = ({ event, onClose }: { event: EventData; onClose: () => void 
           <h4 className="text-xs font-bold uppercase tracking-wider text-foreground mb-2 flex items-center gap-1"><Zap className="w-3 h-3 text-primary" /> Judging Criteria</h4>
           <ul className="space-y-1">{event.judgingCriteria.map((c, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2"><span className="text-primary font-bold">›</span> {c}</li>)}</ul>
         </div>
+        <a href={event.registerLink} target="_blank" rel="noopener noreferrer" className="block w-full rounded-lg bg-primary py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground text-center transition-all hover:glow-red-strong hover:scale-[1.02]">
+          Register Now <ExternalLink className="w-4 h-4 inline ml-1" />
+        </a>
       </div>
     </div>
   </div>
@@ -203,9 +215,9 @@ const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventD
                   {event.category}
                 </span>
               </div>
-              <div className="absolute top-3 right-3 rounded-full bg-card/60 backdrop-blur px-2 py-1 text-[9px] text-muted-foreground uppercase tracking-wider flex items-center gap-1">
-                <Zap className="w-3 h-3 text-primary" /> Flip
-              </div>
+              <a href={event.registerLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="absolute top-3 right-3 rounded-full bg-primary/90 backdrop-blur px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-primary-foreground flex items-center gap-1 hover:bg-primary hover:glow-red transition-all hover:scale-105">
+                Register <ExternalLink className="w-3 h-3" />
+              </a>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="font-display text-sm font-bold uppercase tracking-wide text-foreground text-glow">{event.title}</h3>
                 <p className="text-[10px] text-muted-foreground italic mt-1">{event.tagline}</p>
@@ -228,7 +240,10 @@ const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventD
               </div>
               {event.coordinator && <p className="text-[10px] text-muted-foreground flex items-center gap-1 mb-3"><Phone className="w-3 h-3 text-primary" /> {event.coordinator}</p>}
               <div className="mt-auto space-y-2">
-                <button onClick={(e) => { e.stopPropagation(); onSelect(event); }} className="w-full rounded-lg bg-primary py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground transition-all hover:glow-red-strong hover:scale-[1.02]">
+                <a href={event.registerLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="block w-full rounded-lg bg-primary py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground text-center transition-all hover:glow-red-strong hover:scale-[1.02]">
+                  Register Now <ExternalLink className="w-3 h-3 inline ml-1" />
+                </a>
+                <button onClick={(e) => { e.stopPropagation(); onSelect(event); }} className="w-full rounded-lg border border-primary/30 bg-primary/10 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary/20">
                   View Full Details
                 </button>
                 <p className="text-center text-[9px] text-muted-foreground uppercase tracking-wider">Click card to flip back</p>

@@ -1,6 +1,6 @@
 import LightningBolts from "@/components/LightningBolts";
 import { useState, useCallback } from "react";
-import { Users, Clock, Phone, X, Zap, ExternalLink } from "lucide-react";
+import { Users, Clock, Phone, X, Zap, ExternalLink, MessageCircle } from "lucide-react";
 
 import hopper from "@/assets/characters/hopper.webp";
 import eleven from "@/assets/characters/eleven.webp";
@@ -11,7 +11,7 @@ import vecna from "@/assets/characters/vecna.webp";
 import nancy from "@/assets/characters/nancy.webp";
 import billy from "@/assets/characters/billy.webp";
 
-type Category = "all" | "technical" | "non-technical";
+type Category = "technical" | "non-technical";
 
 interface EventData {
   title: string;
@@ -26,6 +26,7 @@ interface EventData {
   teamSize?: string;
   fee?: string;
   registerLink: string;
+  whatsappLink: string;
 }
 
 const events: EventData[] = [
@@ -41,6 +42,7 @@ const events: EventData[] = [
     time: "10:00 AM - 12:30 PM",
     teamSize: "Max 2",
     registerLink: "https://forms.google.com/your-form-link",
+    whatsappLink: "https://chat.whatsapp.com/FjYRDFDedS5KByXaZjptRe?mode=gi_t",
   },
   {
     title: "Logoverse",
@@ -54,6 +56,7 @@ const events: EventData[] = [
     time: "10:00 AM – 12:30 PM",
     teamSize: "Max 2",
     registerLink: "https://forms.google.com/your-form-link",
+    whatsappLink: "https://chat.whatsapp.com/ENxTduIpEb1LOZ4DtfaQBq?mode=gi_t",
   },
   {
     title: "Prompt-A-Thon",
@@ -66,6 +69,7 @@ const events: EventData[] = [
     coordinator: "Mohammed Arif - 9092629484",
     teamSize: "Max 2",
     registerLink: "https://forms.google.com/your-form-link",
+    whatsappLink: "https://chat.whatsapp.com/KP7kzDDNOjR9s1wnFENIuc?mode=gi_t",
   },
   {
     title: "Syntax Surgery",
@@ -78,6 +82,7 @@ const events: EventData[] = [
     coordinator: "Rubin - 9080672157",
     teamSize: "Individual",
     registerLink: "https://forms.google.com/your-form-link",
+    whatsappLink: "https://chat.whatsapp.com/HX9Hdo5ugSyDQPltnDXxYd?mode=gi_t",
   },
   {
     title: "Adzap",
@@ -90,6 +95,7 @@ const events: EventData[] = [
     coordinator: "Balaji - 9566086804",
     teamSize: "Max 4",
     registerLink: "https://forms.google.com/your-form-link",
+    whatsappLink: "https://chat.whatsapp.com/Jf3vAHEQtcWBQv1SKGot91?mode=gi_t",
   },
   {
     title: "FF Showdown",
@@ -103,6 +109,7 @@ const events: EventData[] = [
     teamSize: "4 members",
     fee: "₹100/player",
     registerLink: "https://forms.google.com/your-form-link",
+    whatsappLink: "https://chat.whatsapp.com/IktjA8k82B9H5sDJPrXScS?mode=gi_t",
   },
   {
     title: "Mystery Lyrics",
@@ -115,6 +122,7 @@ const events: EventData[] = [
     time: "10:00 AM – 12:30 PM",
     teamSize: "2-3 members",
     registerLink: "https://forms.google.com/your-form-link",
+    whatsappLink: "https://chat.whatsapp.com/LNZFoPuePvr5CLsuewwb6T?mode=gi_t",
   },
   {
     title: "Propezz",
@@ -126,11 +134,11 @@ const events: EventData[] = [
     judgingCriteria: ["Accuracy", "Speed", "Overall score", "Consistency"],
     teamSize: "Max 2",
     registerLink: "https://forms.google.com/your-form-link",
+    whatsappLink: "https://chat.whatsapp.com/HsrDze712RjDH4NnFwg7GR?mode=hqctcla",
   },
 ];
 
 const filters: { label: string; value: Category }[] = [
-  { label: "All", value: "all" },
   { label: "Technical", value: "technical" },
   { label: "Non-Technical", value: "non-technical" },
 ];
@@ -158,7 +166,7 @@ const EventModal = ({ event, onClose }: { event: EventData; onClose: () => void 
           <span className={`inline-block rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider mb-2 ${event.category === "technical" ? "bg-primary/20 text-primary border-primary/30" : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"}`}>
             {event.category}
           </span>
-          <h2 className="font-display text-xl font-black uppercase tracking-wider text-foreground text-glow">{event.title}</h2>
+          <h2 className="font-display text-xl font-black uppercase tracking-wider text-foreground text-glow-subtle">{event.title}</h2>
           <p className="text-xs text-muted-foreground italic">{event.tagline}</p>
         </div>
       </div>
@@ -178,9 +186,14 @@ const EventModal = ({ event, onClose }: { event: EventData; onClose: () => void 
           <h4 className="text-xs font-bold uppercase tracking-wider text-foreground mb-2 flex items-center gap-1"><Zap className="w-3 h-3 text-primary" /> Judging Criteria</h4>
           <ul className="space-y-1">{event.judgingCriteria.map((c, i) => <li key={i} className="text-xs text-muted-foreground flex gap-2"><span className="text-primary font-bold">›</span> {c}</li>)}</ul>
         </div>
-        <a href={event.registerLink} target="_blank" rel="noopener noreferrer" className="block w-full rounded-lg bg-primary py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground text-center transition-all hover:glow-red-strong hover:scale-[1.02]">
-          Register Now <ExternalLink className="w-4 h-4 inline ml-1" />
-        </a>
+        <div className="space-y-2">
+          <a href={event.registerLink} target="_blank" rel="noopener noreferrer" className="block w-full rounded-lg bg-primary py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground text-center transition-all hover:glow-red-strong hover:scale-[1.02]">
+            Register Now <ExternalLink className="w-4 h-4 inline ml-1" />
+          </a>
+          <a href={event.whatsappLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full rounded-lg bg-emerald-600 py-3 text-sm font-bold uppercase tracking-wider text-white text-center transition-all hover:bg-emerald-500 hover:scale-[1.02]">
+            <MessageCircle className="w-4 h-4" /> Join Group
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -215,11 +228,16 @@ const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventD
                   {event.category}
                 </span>
               </div>
-              <a href={event.registerLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="absolute top-3 right-3 rounded-full bg-primary/90 backdrop-blur px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-primary-foreground flex items-center gap-1 hover:bg-primary hover:glow-red transition-all hover:scale-105">
-                Register <ExternalLink className="w-3 h-3" />
-              </a>
+              <div className="absolute top-3 right-3 flex flex-col gap-1.5">
+                <a href={event.registerLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="rounded-full bg-primary/90 backdrop-blur px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-primary-foreground flex items-center gap-1 hover:bg-primary hover:glow-red transition-all hover:scale-105">
+                  Register <ExternalLink className="w-3 h-3" />
+                </a>
+                <a href={event.whatsappLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="rounded-full bg-emerald-600/90 backdrop-blur px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-white flex items-center gap-1 hover:bg-emerald-500 transition-all hover:scale-105">
+                  <MessageCircle className="w-3 h-3" /> Join Group
+                </a>
+              </div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="font-display text-sm font-bold uppercase tracking-wide text-foreground text-glow">{event.title}</h3>
+                <h3 className="font-display text-sm font-bold uppercase tracking-wide text-foreground text-glow-subtle">{event.title}</h3>
                 <p className="text-[10px] text-muted-foreground italic mt-1">{event.tagline}</p>
               </div>
             </div>
@@ -228,7 +246,7 @@ const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventD
           <div className="flip-card-back rounded-xl border border-primary/30 bg-card overflow-hidden glow-red">
             <div className="h-full flex flex-col p-5">
               <div className="flex items-center justify-between mb-3">
-                <h3 className="font-display text-sm font-bold uppercase tracking-wide text-primary text-glow">{event.title}</h3>
+                <h3 className="font-display text-sm font-bold uppercase tracking-wide text-primary text-glow-subtle">{event.title}</h3>
                 <span className={`inline-block rounded-full border px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider ${event.category === "technical" ? "bg-primary/20 text-primary border-primary/30" : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"}`}>
                   {event.category}
                 </span>
@@ -242,6 +260,9 @@ const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventD
               <div className="mt-auto space-y-2">
                 <a href={event.registerLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="block w-full rounded-lg bg-primary py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground text-center transition-all hover:glow-red-strong hover:scale-[1.02]">
                   Register Now <ExternalLink className="w-3 h-3 inline ml-1" />
+                </a>
+                <a href={event.whatsappLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex items-center justify-center gap-2 w-full rounded-lg bg-emerald-600 py-2 text-xs font-bold uppercase tracking-wider text-white text-center transition-all hover:bg-emerald-500 hover:scale-[1.02]">
+                  <MessageCircle className="w-3 h-3" /> Join Group
                 </a>
                 <button onClick={(e) => { e.stopPropagation(); onSelect(event); }} className="w-full rounded-lg border border-primary/30 bg-primary/10 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary/20">
                   View Full Details
@@ -258,16 +279,16 @@ const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventD
 
 /* ═══════ Events Section ═══════ */
 const EventsSection = () => {
-  const [activeFilter, setActiveFilter] = useState<Category>("all");
+  const [activeFilter, setActiveFilter] = useState<Category>("technical");
   const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
-  const filtered = activeFilter === "all" ? events : events.filter((e) => e.category === activeFilter);
+  const filtered = events.filter((e) => e.category === activeFilter);
 
   return (
     <section id="events" className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
       {selectedEvent && <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />}
 
       <div className="mx-auto max-w-7xl text-center mb-10">
-        <h2 className="font-display text-4xl sm:text-5xl font-black uppercase tracking-wider text-foreground text-glow">Events</h2>
+        <h2 className="font-display text-4xl sm:text-5xl font-black uppercase tracking-wider text-foreground text-glow-subtle">Events</h2>
         <p className="mt-3 text-muted-foreground text-sm">Click a card to flip it ⚡ — then view full details</p>
       </div>
 

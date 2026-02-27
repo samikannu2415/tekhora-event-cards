@@ -1,42 +1,36 @@
 import CountdownTimer from "@/components/CountdownTimer";
 import Navbar from "@/components/Navbar";
 import UpsideDownBackground from "@/components/UpsideDownBackground";
-import { Flame, Phone, MapPin, Mail } from "lucide-react";
+import { Flame, Phone, MapPin, Mail, Users, GraduationCap } from "lucide-react";
 import EventsSection from "@/components/sections/EventsSection";
+import ScheduleSection from "@/components/sections/ScheduleSection";
 import logo from "@/assets/logo.png";
 
-const contactCards = [
-{
-  title: "Event Coordinators",
-  icon: Phone,
-  items: [
-  "Chandru – 6382055872",
-  "Gayathiri – 8838484319",
-  "Mohammed Arif – 9092629484",
-  "Rubin – 9080672157",
-  "Balaji – 9566086804",
-  "Kamalash – 9150474716"]
+/* ═══════ CONTACT DATA FROM COORDINATORS DOC ═══════ */
+const facultyCoordinators = [
+  { name: "Mrs. A. Saranya Durai M.E, Ph.D", role: "Assistant Professor" },
+  { name: "Mrs. R. Suriya M.E", role: "Assistant Professor" },
+  { name: "Mrs. P. Nandini M.E, B.Ed", role: "Assistant Professor" },
+  { name: "Mrs. M. Renuka M.E", role: "Assistant Professor" },
+  { name: "Mr. R. Prakash M.Tech", role: "Assistant Professor" },
+  { name: "Mr. P. Dhanarasan M.E", role: "Assistant Professor" },
+  { name: "Mr. R. Krishnan M.E", role: "Assistant Professor" },
+];
 
-},
-{
-  title: "Location",
-  icon: MapPin,
-  items: [
-  "Annapoorana Engineering College",
-  "Salem – Namakkal Highway",
-  "Periyaseeragapadi, Salem – 636308",
-  "Tamil Nadu, India"]
+const technicalCoordinators = [
+  { event: "Insight-Ignite", name: "Chandru S", phone: "6382055872" },
+  { event: "Logoverse", name: "Gayathiri A", phone: "8838484319" },
+  { event: "Prompt-A-Thon", name: "Mohammed Arif S", phone: "9092629484" },
+  { event: "Syntax Surgery", name: "Rubin S", phone: "9080672157" },
+];
 
-},
-{
-  title: "Get in Touch",
-  icon: Mail,
-  items: [
-  "info@annapoorana.ac.in",
-  "Phone: 0427 – 2477777"]
-
-}];
-
+const nonTechCoordinators = [
+  { event: "Adzap", name: "Balaji M", phone: "9566086804" },
+  { event: "FF Showdown", name: "Kamalesh P", phone: "9150474716" },
+  { event: "Mystery Lyrics", name: "Deva Dharshini S", phone: "7867012967" },
+  { event: "Propezz", name: "Dharmaraj E", phone: "9865718082" },
+  { event: "Snap-Shot", name: "Prithivi Raj P", phone: "7639268509" },
+];
 
 const Index = () => {
   return (
@@ -50,9 +44,9 @@ const Index = () => {
           <img
             src={logo}
             alt="Zen-IT-Trix Logo"
-            className="w-72 h-72 sm:w-96 sm:h-96 mx-auto drop-shadow-[0_0_50px_hsla(0,85%,50%,0.7)] brightness-110 hue-rotate-[-10deg] saturate-200"
-            style={{ filter: 'brightness(1.1) saturate(2) sepia(1) hue-rotate(-30deg) drop-shadow(0 0 50px hsla(0,85%,50%,0.7))' }} />
-
+            className="w-80 h-80 sm:w-[28rem] sm:h-[28rem] mx-auto drop-shadow-[0_0_60px_hsla(0,85%,50%,0.7)]"
+            style={{ filter: 'brightness(1.2) saturate(2.5) sepia(1) hue-rotate(-30deg) contrast(1.1) drop-shadow(0 0 60px hsla(0,85%,50%,0.7))' }}
+          />
 
           <div className="flex items-center justify-center gap-2 text-primary">
             <Flame className="w-5 h-5 animate-pulse" />
@@ -113,33 +107,143 @@ const Index = () => {
       {/* ═══════ EVENTS ═══════ */}
       <EventsSection />
 
+      {/* ═══════ SCHEDULE ═══════ */}
+      <ScheduleSection />
+
       {/* ═══════ CONTACT ═══════ */}
       <section id="contact" className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl text-center mb-12">
+        <div className="mx-auto max-w-6xl text-center mb-12">
           <h2 className="font-display text-4xl sm:text-5xl font-black uppercase tracking-wider text-foreground text-glow-subtle">
             Contact Us
           </h2>
           <div className="h-1 w-16 bg-primary mx-auto rounded-full glow-red mt-4" />
         </div>
 
-        <div className="mx-auto max-w-5xl grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {contactCards.map((card) =>
-          <div key={card.title} className="border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300 rounded-2xl">
-              <div className="flex items-center gap-3">
-                <div className="rounded-full bg-primary/20 p-2.5">
-                  <card.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">{card.title}</h3>
+        <div className="mx-auto max-w-6xl grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {/* HOD Card */}
+          <div className="rounded-2xl border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-primary/20 p-2.5">
+                <GraduationCap className="w-5 h-5 text-primary" />
               </div>
-              <div className="space-y-2">
-                {card.items.map((item, i) =>
-              <p key={i} className="flex items-start gap-2 text-sm text-primary-foreground">
-                    <span className="text-primary font-bold mt-0.5">›</span> {item}
-                  </p>
-              )}
-              </div>
+              <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">HOD / IT</h3>
             </div>
-          )}
+            <p className="text-sm text-primary-foreground font-semibold">Dr. S. Venkatesan M.E, Ph.D</p>
+          </div>
+
+          {/* Faculty Coordinators */}
+          <div className="rounded-2xl border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300 lg:col-span-2">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-primary/20 p-2.5">
+                <Users className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Faculty Coordinators</h3>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-2">
+              {facultyCoordinators.map((f) => (
+                <p key={f.name} className="text-sm text-primary-foreground flex items-start gap-2">
+                  <span className="text-primary font-bold mt-0.5">›</span>
+                  <span>{f.name} <span className="text-muted-foreground text-xs">— {f.role}</span></span>
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {/* Student Coordinator */}
+          <div className="rounded-2xl border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-primary/20 p-2.5">
+                <Users className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Student Coordinator</h3>
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm text-primary-foreground font-semibold">Hassan Ali S</p>
+              <p className="text-xs text-muted-foreground flex items-center gap-1">
+                <Phone className="w-3 h-3" /> 8124407875
+              </p>
+            </div>
+          </div>
+
+          {/* Technical Event Coordinators */}
+          <div className="rounded-2xl border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-primary/20 p-2.5">
+                <Phone className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Technical Events</h3>
+            </div>
+            <div className="space-y-2">
+              {technicalCoordinators.map((c) => (
+                <div key={c.event}>
+                  <p className="text-xs font-semibold text-foreground">{c.event}</p>
+                  <p className="text-xs text-muted-foreground">{c.name} – {c.phone}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Non-Technical Event Coordinators */}
+          <div className="rounded-2xl border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-primary/20 p-2.5">
+                <Phone className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Non-Technical Events</h3>
+            </div>
+            <div className="space-y-2">
+              {nonTechCoordinators.map((c) => (
+                <div key={c.event}>
+                  <p className="text-xs font-semibold text-foreground">{c.event}</p>
+                  <p className="text-xs text-muted-foreground">{c.name} – {c.phone}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Location Card */}
+          <div className="rounded-2xl border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-primary/20 p-2.5">
+                <MapPin className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Location</h3>
+            </div>
+            <div className="space-y-1 text-sm text-primary-foreground">
+              <p>Annapoorana Engineering College</p>
+              <p className="text-xs text-muted-foreground">Salem – Namakkal Highway</p>
+              <p className="text-xs text-muted-foreground">Periyaseeragapadi, Salem – 636308</p>
+              <p className="text-xs text-muted-foreground">Tamil Nadu, India</p>
+            </div>
+          </div>
+
+          {/* Get in Touch */}
+          <div className="rounded-2xl border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300">
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-primary/20 p-2.5">
+                <Mail className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Get in Touch</h3>
+            </div>
+            <div className="space-y-1 text-sm text-primary-foreground">
+              <p>info@annapoorana.ac.in</p>
+              <p className="text-xs text-muted-foreground">Phone: 0427 – 2477777</p>
+            </div>
+          </div>
+
+          {/* Google Maps Embed */}
+          <div className="rounded-2xl border border-border bg-card/80 backdrop-blur overflow-hidden hover:border-primary/40 hover:glow-red transition-all duration-300 md:col-span-2 lg:col-span-3">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.0!2d78.1!3d11.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babf1a3a4c1a7c5%3A0x91b0b1d0be7e5e8a!2sAnnapoorana%20Engineering%20College!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              width="100%"
+              height="300"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Annapoorana Engineering College Location"
+            />
+          </div>
         </div>
       </section>
 
@@ -159,11 +263,11 @@ const Index = () => {
             <div className="space-y-3">
               <h4 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Quick Links</h4>
               <div className="flex flex-col gap-1">
-                {["Home", "About", "Events", "Contact"].map((l) =>
-                <a key={l} href={`#${l.toLowerCase()}`} className="transition-colors w-fit text-primary-foreground text-sm">
+                {["Home", "About", "Events", "Schedule", "Contact"].map((l) => (
+                  <a key={l} href={`#${l.toLowerCase()}`} className="transition-colors w-fit text-primary-foreground text-sm hover:text-primary">
                     {l}
                   </a>
-                )}
+                ))}
               </div>
             </div>
           </div>
@@ -174,8 +278,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>);
-
+    </div>
+  );
 };
 
 export default Index;

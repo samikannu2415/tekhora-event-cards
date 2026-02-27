@@ -59,6 +59,11 @@
     @apply bg-background text-foreground font-body;
     background: linear-gradient(135deg, hsl(220 20% 4%) 0%, hsl(0 60% 6%) 50%, hsl(220 20% 4%) 100%);
     min-height: 100vh;
+    cursor: url('/cursors/vecna-hand.png') 16 0, auto;
+  }
+
+  a, button, [role="button"] {
+    cursor: url('/cursors/vecna-hand.png') 16 0, pointer;
   }
 }
 

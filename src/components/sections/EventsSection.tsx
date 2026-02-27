@@ -30,130 +30,130 @@ interface EventData {
 }
 
 const events: EventData[] = [
-  {
-    title: "Insight-Ignite",
-    tagline: "Research. Present. Impress.",
-    category: "technical",
-    image: hopper,
-    description: "Paper Presentation is a technical event where participants present their ideas or research on a specific technical topic using a PowerPoint presentation.",
-    rules: ["Max 2 members per team", "Any technical topic allowed", "Max 8 slides", "5 min presentation + 2 min Q&A", "PPT submitted before event"],
-    judgingCriteria: ["Content quality & originality", "Clarity of presentation", "Technical depth & visuals", "Time management"],
-    coordinator: "Chandru - 6382055872",
-    time: "10:00 AM - 12:30 PM",
-    teamSize: "Max 2",
-    registerLink: "https://forms.google.com/your-form-link",
-    whatsappLink: "https://chat.whatsapp.com/FjYRDFDedS5KByXaZjptRe?mode=gi_t",
-  },
-  {
-    title: "Logoverse",
-    tagline: "Empathize. Design. Elevate.",
-    category: "technical",
-    image: eleven,
-    description: "UX/UI Logo Design event where participants design an innovative logo using Canva or Figma and explain concept, color psychology, and typography.",
-    rules: ["Max 2 members per team", "Tools: Canva, Figma", "60–90 min for design", "3–5 min explanation", "Submit PNG/PDF", "Bring laptop"],
-    judgingCriteria: ["Creativity & originality", "Relevance to theme", "Color theory & typography", "Branding impact"],
-    coordinator: "Gayathiri - 8838484319",
-    time: "10:00 AM – 12:30 PM",
-    teamSize: "Max 2",
-    registerLink: "https://forms.google.com/your-form-link",
-    whatsappLink: "https://chat.whatsapp.com/ENxTduIpEb1LOZ4DtfaQBq?mode=gi_t",
-  },
-  {
-    title: "Prompt-A-Thon",
-    tagline: "Craft. Prompt. Create.",
-    category: "technical",
-    image: steve,
-    description: "AI-powered website design competition. Build a complete website using structured prompts with AI builders. No manual coding allowed.",
-    rules: ["Max 2 members", "30 min time limit", "Tools: Lovable, Canva AI, Bolt", "Zero Code Policy", "5–7 prompts only"],
-    judgingCriteria: ["Prompt efficiency", "UI design quality", "Design consistency", "Innovation"],
-    coordinator: "Mohammed Arif - 9092629484",
-    teamSize: "Max 2",
-    registerLink: "https://forms.google.com/your-form-link",
-    whatsappLink: "https://chat.whatsapp.com/KP7kzDDNOjR9s1wnFENIuc?mode=gi_t",
-  },
-  {
-    title: "Syntax Surgery",
-    tagline: "Trace. Tackle. Triumph.",
-    category: "technical",
-    image: dustin,
-    description: "Code Debugging – Python. Identify, analyze, and fix errors in given Python programs within a limited time.",
-    rules: ["Individual only", "Python only", "30–45 min", "Internet may be restricted"],
-    judgingCriteria: ["Accuracy", "Logical understanding", "Time management", "Code optimization"],
-    coordinator: "Rubin - 9080672157",
-    teamSize: "Individual",
-    registerLink: "https://forms.google.com/your-form-link",
-    whatsappLink: "https://chat.whatsapp.com/HX9Hdo5ugSyDQPltnDXxYd?mode=gi_t",
-  },
-  {
-    title: "Adzap",
-    tagline: "Act. Advertise. Amaze.",
-    category: "non-technical",
-    image: max,
-    description: "On-stage advertising competition. Creatively promote a product through live acting, skits, role-play, or marketing pitches.",
-    rules: ["Max 4 members", "5 min performance + 2 min Q&A", "Theme given on spot", "Simple props allowed", "No vulgar content"],
-    judgingCriteria: ["Creativity", "Stage presence", "Marketing strategy", "Audience engagement"],
-    coordinator: "Balaji - 9566086804",
-    teamSize: "Max 4",
-    registerLink: "https://forms.google.com/your-form-link",
-    whatsappLink: "https://chat.whatsapp.com/Jf3vAHEQtcWBQv1SKGot91?mode=gi_t",
-  },
-  {
-    title: "FF Showdown",
-    tagline: "Survive. Strategize. Conquer.",
-    category: "non-technical",
-    image: vecna,
-    description: "Esports – Free Fire Tournament. Battle Royale and Clash Squad modes across multiple elimination stages.",
-    rules: ["4 members per team", "25 teams max", "₹100 per player", "3 rounds: BR → CS → Finals"],
-    judgingCriteria: ["Survival duration", "Kill points", "Team coordination", "Strategy"],
-    coordinator: "Kamalash - 9150474716",
-    teamSize: "4 members",
-    fee: "₹100/player",
-    registerLink: "https://forms.google.com/your-form-link",
-    whatsappLink: "https://chat.whatsapp.com/IktjA8k82B9H5sDJPrXScS?mode=gi_t",
-  },
-  {
-    title: "Mystery Lyrics",
-    tagline: "Read. Decode. Reveal.",
-    category: "non-technical",
-    image: nancy,
-    description: "Tamil song-based guessing game. Identify the original Tamil song from gibberish-converted English translations.",
-    rules: ["2–3 members per team", "30–45 sec per question", "One answer per round", "No phones"],
-    judgingCriteria: ["Accuracy", "Time management", "Clarity of response", "Rule compliance"],
-    time: "10:00 AM – 12:30 PM",
-    teamSize: "2-3 members",
-    registerLink: "https://forms.google.com/your-form-link",
-    whatsappLink: "https://chat.whatsapp.com/LNZFoPuePvr5CLsuewwb6T?mode=gi_t",
-  },
-  {
-    title: "Propezz",
-    tagline: "Think. Compete. Conquer.",
-    category: "non-technical",
-    image: billy,
-    description: "Interactive quiz event on Blooket. Fast-paced, gamified MCQ environment testing knowledge, speed, and accuracy.",
-    rules: ["Max 2 members", "Join via game code", "Multiple rounds", "No external help"],
-    judgingCriteria: ["Accuracy", "Speed", "Overall score", "Consistency"],
-    teamSize: "Max 2",
-    registerLink: "https://forms.google.com/your-form-link",
-    whatsappLink: "https://chat.whatsapp.com/HsrDze712RjDH4NnFwg7GR?mode=hqctcla",
-  },
-];
+{
+  title: "Insight-Ignite",
+  tagline: "Research. Present. Impress.",
+  category: "technical",
+  image: hopper,
+  description: "Paper Presentation is a technical event where participants present their ideas or research on a specific technical topic using a PowerPoint presentation.",
+  rules: ["Max 2 members per team", "Any technical topic allowed", "Max 8 slides", "5 min presentation + 2 min Q&A", "PPT submitted before event"],
+  judgingCriteria: ["Content quality & originality", "Clarity of presentation", "Technical depth & visuals", "Time management"],
+  coordinator: "Chandru - 6382055872",
+  time: "10:00 AM - 12:30 PM",
+  teamSize: "Max 2",
+  registerLink: "https://forms.google.com/your-form-link",
+  whatsappLink: "https://chat.whatsapp.com/FjYRDFDedS5KByXaZjptRe?mode=gi_t"
+},
+{
+  title: "Logoverse",
+  tagline: "Empathize. Design. Elevate.",
+  category: "technical",
+  image: eleven,
+  description: "UX/UI Logo Design event where participants design an innovative logo using Canva or Figma and explain concept, color psychology, and typography.",
+  rules: ["Max 2 members per team", "Tools: Canva, Figma", "60–90 min for design", "3–5 min explanation", "Submit PNG/PDF", "Bring laptop"],
+  judgingCriteria: ["Creativity & originality", "Relevance to theme", "Color theory & typography", "Branding impact"],
+  coordinator: "Gayathiri - 8838484319",
+  time: "10:00 AM – 12:30 PM",
+  teamSize: "Max 2",
+  registerLink: "https://forms.google.com/your-form-link",
+  whatsappLink: "https://chat.whatsapp.com/ENxTduIpEb1LOZ4DtfaQBq?mode=gi_t"
+},
+{
+  title: "Prompt-A-Thon",
+  tagline: "Craft. Prompt. Create.",
+  category: "technical",
+  image: steve,
+  description: "AI-powered website design competition. Build a complete website using structured prompts with AI builders. No manual coding allowed.",
+  rules: ["Max 2 members", "30 min time limit", "Tools: Lovable, Canva AI, Bolt", "Zero Code Policy", "5–7 prompts only"],
+  judgingCriteria: ["Prompt efficiency", "UI design quality", "Design consistency", "Innovation"],
+  coordinator: "Mohammed Arif - 9092629484",
+  teamSize: "Max 2",
+  registerLink: "https://forms.google.com/your-form-link",
+  whatsappLink: "https://chat.whatsapp.com/KP7kzDDNOjR9s1wnFENIuc?mode=gi_t"
+},
+{
+  title: "Syntax Surgery",
+  tagline: "Trace. Tackle. Triumph.",
+  category: "technical",
+  image: dustin,
+  description: "Code Debugging – Python. Identify, analyze, and fix errors in given Python programs within a limited time.",
+  rules: ["Individual only", "Python only", "30–45 min", "Internet may be restricted"],
+  judgingCriteria: ["Accuracy", "Logical understanding", "Time management", "Code optimization"],
+  coordinator: "Rubin - 9080672157",
+  teamSize: "Individual",
+  registerLink: "https://forms.google.com/your-form-link",
+  whatsappLink: "https://chat.whatsapp.com/HX9Hdo5ugSyDQPltnDXxYd?mode=gi_t"
+},
+{
+  title: "Adzap",
+  tagline: "Act. Advertise. Amaze.",
+  category: "non-technical",
+  image: max,
+  description: "On-stage advertising competition. Creatively promote a product through live acting, skits, role-play, or marketing pitches.",
+  rules: ["Max 4 members", "5 min performance + 2 min Q&A", "Theme given on spot", "Simple props allowed", "No vulgar content"],
+  judgingCriteria: ["Creativity", "Stage presence", "Marketing strategy", "Audience engagement"],
+  coordinator: "Balaji - 9566086804",
+  teamSize: "Max 4",
+  registerLink: "https://forms.google.com/your-form-link",
+  whatsappLink: "https://chat.whatsapp.com/Jf3vAHEQtcWBQv1SKGot91?mode=gi_t"
+},
+{
+  title: "FF Showdown",
+  tagline: "Survive. Strategize. Conquer.",
+  category: "non-technical",
+  image: vecna,
+  description: "Esports – Free Fire Tournament. Battle Royale and Clash Squad modes across multiple elimination stages.",
+  rules: ["4 members per team", "25 teams max", "₹100 per player", "3 rounds: BR → CS → Finals"],
+  judgingCriteria: ["Survival duration", "Kill points", "Team coordination", "Strategy"],
+  coordinator: "Kamalash - 9150474716",
+  teamSize: "4 members",
+  fee: "₹100/player",
+  registerLink: "https://forms.google.com/your-form-link",
+  whatsappLink: "https://chat.whatsapp.com/IktjA8k82B9H5sDJPrXScS?mode=gi_t"
+},
+{
+  title: "Mystery Lyrics",
+  tagline: "Read. Decode. Reveal.",
+  category: "non-technical",
+  image: nancy,
+  description: "Tamil song-based guessing game. Identify the original Tamil song from gibberish-converted English translations.",
+  rules: ["2–3 members per team", "30–45 sec per question", "One answer per round", "No phones"],
+  judgingCriteria: ["Accuracy", "Time management", "Clarity of response", "Rule compliance"],
+  time: "10:00 AM – 12:30 PM",
+  teamSize: "2-3 members",
+  registerLink: "https://forms.google.com/your-form-link",
+  whatsappLink: "https://chat.whatsapp.com/LNZFoPuePvr5CLsuewwb6T?mode=gi_t"
+},
+{
+  title: "Propezz",
+  tagline: "Think. Compete. Conquer.",
+  category: "non-technical",
+  image: billy,
+  description: "Interactive quiz event on Blooket. Fast-paced, gamified MCQ environment testing knowledge, speed, and accuracy.",
+  rules: ["Max 2 members", "Join via game code", "Multiple rounds", "No external help"],
+  judgingCriteria: ["Accuracy", "Speed", "Overall score", "Consistency"],
+  teamSize: "Max 2",
+  registerLink: "https://forms.google.com/your-form-link",
+  whatsappLink: "https://chat.whatsapp.com/HsrDze712RjDH4NnFwg7GR?mode=hqctcla"
+}];
 
-const filters: { label: string; value: Category }[] = [
-  { label: "Technical", value: "technical" },
-  { label: "Non-Technical", value: "non-technical" },
-];
+
+const filters: {label: string;value: Category;}[] = [
+{ label: "Technical", value: "technical" },
+{ label: "Non-Technical", value: "non-technical" }];
+
 
 /* ───── Lightning Flash Overlay ───── */
-const LightningFlash = ({ active }: { active: boolean }) => {
+const LightningFlash = ({ active }: {active: boolean;}) => {
   if (!active) return null;
   return (
-    <div className="fixed inset-0 z-[100] pointer-events-none lightning-flash mix-blend-overlay" style={{ background: "hsla(0, 85%, 45%, 0.5)" }} />
-  );
+    <div className="fixed inset-0 z-[100] pointer-events-none lightning-flash mix-blend-overlay" style={{ background: "hsla(0, 85%, 45%, 0.5)" }} />);
+
 };
 
 /* ───── Event Detail Modal ───── */
-const EventModal = ({ event, onClose }: { event: EventData; onClose: () => void }) => (
-  <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
+const EventModal = ({ event, onClose }: {event: EventData;onClose: () => void;}) =>
+<div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
     <div className="absolute inset-0 bg-background/80 backdrop-blur-md animate-backdrop-in" />
     <div className="relative z-10 w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl border border-primary/30 bg-card glow-red-strong animate-modal-in" onClick={(e) => e.stopPropagation()}>
       <div className="relative h-48 overflow-hidden rounded-t-2xl">
@@ -196,11 +196,11 @@ const EventModal = ({ event, onClose }: { event: EventData; onClose: () => void 
         </div>
       </div>
     </div>
-  </div>
-);
+  </div>;
+
 
 /* ───── Flip Event Card ───── */
-const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventData) => void }) => {
+const EventCard = ({ event, onSelect }: {event: EventData;onSelect: (e: EventData) => void;}) => {
   const [flipped, setFlipped] = useState(false);
   const [lightning, setLightning] = useState(false);
   const [boltsKey, setBoltsKey] = useState(0);
@@ -251,12 +251,12 @@ const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventD
                   {event.category}
                 </span>
               </div>
-              <p className="text-[11px] text-muted-foreground leading-relaxed mb-3 line-clamp-3">{event.description}</p>
+              <p className="text-[11px] leading-relaxed mb-3 line-clamp-3 text-primary-foreground">{event.description}</p>
               <div className="flex flex-wrap gap-2 text-[10px] text-muted-foreground mb-3">
                 {event.teamSize && <span className="flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5"><Users className="w-3 h-3" /> {event.teamSize}</span>}
                 {event.time && <span className="flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5"><Clock className="w-3 h-3" /> {event.time}</span>}
               </div>
-              {event.coordinator && <p className="text-[10px] text-muted-foreground flex items-center gap-1 mb-3"><Phone className="w-3 h-3 text-primary" /> {event.coordinator}</p>}
+              {event.coordinator && <p className="flex items-center gap-1 mb-3 text-primary-foreground text-sm"><Phone className="w-3 h-3 text-primary" /> {event.coordinator}</p>}
               <div className="mt-auto space-y-2">
                 <a href={event.registerLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="block w-full rounded-lg bg-primary py-2.5 text-xs font-bold uppercase tracking-wider text-primary-foreground text-center transition-all hover:glow-red-strong hover:scale-[1.02]">
                   Register Now <ExternalLink className="w-3 h-3 inline ml-1" />
@@ -264,7 +264,7 @@ const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventD
                 <a href={event.whatsappLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex items-center justify-center gap-2 w-full rounded-lg bg-emerald-600 py-2 text-xs font-bold uppercase tracking-wider text-white text-center transition-all hover:bg-emerald-500 hover:scale-[1.02]">
                   <MessageCircle className="w-3 h-3" /> Join Group
                 </a>
-                <button onClick={(e) => { e.stopPropagation(); onSelect(event); }} className="w-full rounded-lg border border-primary/30 bg-primary/10 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary/20">
+                <button onClick={(e) => {e.stopPropagation();onSelect(event);}} className="w-full rounded-lg border border-primary/30 bg-primary/10 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary/20">
                   View Full Details
                 </button>
                 <p className="text-center text-[9px] text-muted-foreground uppercase tracking-wider">Click card to flip back</p>
@@ -273,8 +273,8 @@ const EventCard = ({ event, onSelect }: { event: EventData; onSelect: (e: EventD
           </div>
         </div>
       </div>
-    </>
-  );
+    </>);
+
 };
 
 /* ═══════ Events Section ═══════ */
@@ -293,20 +293,20 @@ const EventsSection = () => {
       </div>
 
       <nav className="mx-auto max-w-7xl flex flex-wrap justify-center gap-2 mb-10">
-        {filters.map((f) => (
-          <button key={f.value} onClick={() => setActiveFilter(f.value)} className={`rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${activeFilter === f.value ? "border-primary bg-primary text-primary-foreground glow-red" : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground"}`}>
+        {filters.map((f) =>
+        <button key={f.value} onClick={() => setActiveFilter(f.value)} className={`rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${activeFilter === f.value ? "border-primary bg-primary text-primary-foreground glow-red" : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground"}`}>
             {f.label}
           </button>
-        ))}
+        )}
       </nav>
 
       <div className="mx-auto max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {filtered.map((event) => (
-          <EventCard key={event.title} event={event} onSelect={setSelectedEvent} />
-        ))}
+        {filtered.map((event) =>
+        <EventCard key={event.title} event={event} onSelect={setSelectedEvent} />
+        )}
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default EventsSection;

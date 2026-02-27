@@ -1,5 +1,5 @@
 import LightningBolts from "@/components/LightningBolts";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Users, Clock, Phone, X, Zap, ExternalLink, MessageCircle } from "lucide-react";
 
 import hopper from "@/assets/characters/hopper.webp";
@@ -10,6 +10,8 @@ import max from "@/assets/characters/max.webp";
 import vecna from "@/assets/characters/vecna.webp";
 import nancy from "@/assets/characters/nancy.webp";
 import billy from "@/assets/characters/billy.webp";
+import robin from "@/assets/characters/robin.webp";
+import will from "@/assets/characters/will.webp";
 
 type Category = "technical" | "non-technical";
 
@@ -29,6 +31,8 @@ interface EventData {
   whatsappLink: string;
 }
 
+const GOOGLE_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSfZ4hQEdtAIz1GYIrMXtprbMMsWViIYX8qHOloFGYgxJiv0Iw/viewform?usp=publish-editor";
+
 const events: EventData[] = [
 {
   title: "Insight-Ignite",
@@ -41,7 +45,7 @@ const events: EventData[] = [
   coordinator: "Chandru - 6382055872",
   time: "10:00 AM - 12:30 PM",
   teamSize: "Max 2",
-  registerLink: "https://forms.google.com/your-form-link",
+  registerLink: GOOGLE_FORM,
   whatsappLink: "https://chat.whatsapp.com/FjYRDFDedS5KByXaZjptRe?mode=gi_t"
 },
 {
@@ -55,7 +59,7 @@ const events: EventData[] = [
   coordinator: "Gayathiri - 8838484319",
   time: "10:00 AM – 12:30 PM",
   teamSize: "Max 2",
-  registerLink: "https://forms.google.com/your-form-link",
+  registerLink: GOOGLE_FORM,
   whatsappLink: "https://chat.whatsapp.com/ENxTduIpEb1LOZ4DtfaQBq?mode=gi_t"
 },
 {
@@ -68,7 +72,7 @@ const events: EventData[] = [
   judgingCriteria: ["Prompt efficiency", "UI design quality", "Design consistency", "Innovation"],
   coordinator: "Mohammed Arif - 9092629484",
   teamSize: "Max 2",
-  registerLink: "https://forms.google.com/your-form-link",
+  registerLink: GOOGLE_FORM,
   whatsappLink: "https://chat.whatsapp.com/KP7kzDDNOjR9s1wnFENIuc?mode=gi_t"
 },
 {
@@ -81,7 +85,7 @@ const events: EventData[] = [
   judgingCriteria: ["Accuracy", "Logical understanding", "Time management", "Code optimization"],
   coordinator: "Rubin - 9080672157",
   teamSize: "Individual",
-  registerLink: "https://forms.google.com/your-form-link",
+  registerLink: GOOGLE_FORM,
   whatsappLink: "https://chat.whatsapp.com/HX9Hdo5ugSyDQPltnDXxYd?mode=gi_t"
 },
 {
@@ -94,7 +98,7 @@ const events: EventData[] = [
   judgingCriteria: ["Creativity", "Stage presence", "Marketing strategy", "Audience engagement"],
   coordinator: "Balaji - 9566086804",
   teamSize: "Max 4",
-  registerLink: "https://forms.google.com/your-form-link",
+  registerLink: GOOGLE_FORM,
   whatsappLink: "https://chat.whatsapp.com/Jf3vAHEQtcWBQv1SKGot91?mode=gi_t"
 },
 {
@@ -108,7 +112,7 @@ const events: EventData[] = [
   coordinator: "Kamalash - 9150474716",
   teamSize: "4 members",
   fee: "₹100/player",
-  registerLink: "https://forms.google.com/your-form-link",
+  registerLink: GOOGLE_FORM,
   whatsappLink: "https://chat.whatsapp.com/IktjA8k82B9H5sDJPrXScS?mode=gi_t"
 },
 {
@@ -121,7 +125,7 @@ const events: EventData[] = [
   judgingCriteria: ["Accuracy", "Time management", "Clarity of response", "Rule compliance"],
   time: "10:00 AM – 12:30 PM",
   teamSize: "2-3 members",
-  registerLink: "https://forms.google.com/your-form-link",
+  registerLink: GOOGLE_FORM,
   whatsappLink: "https://chat.whatsapp.com/LNZFoPuePvr5CLsuewwb6T?mode=gi_t"
 },
 {
@@ -133,26 +137,40 @@ const events: EventData[] = [
   rules: ["Max 2 members", "Join via game code", "Multiple rounds", "No external help"],
   judgingCriteria: ["Accuracy", "Speed", "Overall score", "Consistency"],
   teamSize: "Max 2",
-  registerLink: "https://forms.google.com/your-form-link",
+  registerLink: GOOGLE_FORM,
   whatsappLink: "https://chat.whatsapp.com/HsrDze712RjDH4NnFwg7GR?mode=hqctcla"
+},
+{
+  title: "Snap-Shot",
+  tagline: "Create. Capture. Convey.",
+  category: "non-technical",
+  image: robin,
+  description: "Short Film is a creative storytelling event where participants create and present a short film based on a given theme or social concept. Showcase talent in filmmaking, communication, and creative expression.",
+  rules: ["Max 4–6 members per team", "Film duration: 5–10 minutes", "Language: Tamil / English", "Vulgar or inappropriate content is strictly prohibited"],
+  judgingCriteria: ["Storyline & originality", "Direction & screenplay", "Acting & expression", "Technical quality (editing, sound, visuals)", "Overall impact & message clarity"],
+  time: "2:30 PM – 4:00 PM",
+  teamSize: "4-6 members",
+  registerLink: GOOGLE_FORM,
+  whatsappLink: "https://chat.whatsapp.com/DgWm2b2FGpcBKzRNbGBOZJ?mode=gi_t"
 }];
 
 
-const filters: {label: string;value: Category;}[] = [
-{ label: "Technical", value: "technical" },
-{ label: "Non-Technical", value: "non-technical" }];
+const filters: {label: string; value: Category;}[] = [
+  { label: "Technical", value: "technical" },
+  { label: "Non-Technical", value: "non-technical" }
+];
 
 
 /* ───── Lightning Flash Overlay ───── */
 const LightningFlash = ({ active }: {active: boolean;}) => {
   if (!active) return null;
   return (
-    <div className="fixed inset-0 z-[100] pointer-events-none lightning-flash mix-blend-overlay" style={{ background: "hsla(0, 85%, 45%, 0.5)" }} />);
-
+    <div className="fixed inset-0 z-[100] pointer-events-none lightning-flash mix-blend-overlay" style={{ background: "hsla(0, 85%, 45%, 0.5)" }} />
+  );
 };
 
 /* ───── Event Detail Modal ───── */
-const EventModal = ({ event, onClose }: {event: EventData;onClose: () => void;}) =>
+const EventModal = ({ event, onClose }: {event: EventData; onClose: () => void;}) =>
 <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
     <div className="absolute inset-0 bg-background/80 backdrop-blur-md animate-backdrop-in" />
     <div className="relative z-10 w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-2xl border border-primary/30 bg-card glow-red-strong animate-modal-in" onClick={(e) => e.stopPropagation()}>
@@ -199,26 +217,46 @@ const EventModal = ({ event, onClose }: {event: EventData;onClose: () => void;})
   </div>;
 
 
-/* ───── Flip Event Card ───── */
-const EventCard = ({ event, onSelect }: {event: EventData;onSelect: (e: EventData) => void;}) => {
+/* ───── Flip Event Card with Auto-flip ───── */
+const EventCard = ({ event, onSelect }: {event: EventData; onSelect: (e: EventData) => void;}) => {
   const [flipped, setFlipped] = useState(false);
   const [lightning, setLightning] = useState(false);
   const [boltsKey, setBoltsKey] = useState(0);
+  const autoFlipRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const handleFlip = useCallback(() => {
+  const triggerFlip = useCallback(() => {
     setLightning(true);
     setBoltsKey((k) => k + 1);
     setTimeout(() => setLightning(false), 800);
     setFlipped((f) => !f);
   }, []);
 
+  // Auto-flip every 3 seconds
+  useEffect(() => {
+    autoFlipRef.current = setInterval(() => {
+      triggerFlip();
+    }, 3000);
+    return () => {
+      if (autoFlipRef.current) clearInterval(autoFlipRef.current);
+    };
+  }, [triggerFlip]);
+
+  const handleManualFlip = useCallback(() => {
+    // Reset auto-flip timer on manual click
+    if (autoFlipRef.current) clearInterval(autoFlipRef.current);
+    triggerFlip();
+    autoFlipRef.current = setInterval(() => {
+      triggerFlip();
+    }, 3000);
+  }, [triggerFlip]);
+
   return (
     <>
       <LightningFlash active={lightning} />
-      <div className="perspective cursor-pointer relative" style={{ height: 420 }} onClick={handleFlip}>
+      <div className="perspective cursor-pointer relative" style={{ height: 420 }} onClick={handleManualFlip}>
         <LightningBolts key={boltsKey} active={lightning} />
         <div className={`flip-card-inner ${flipped ? "flipped" : ""}`}>
-          {/* FRONT */}
+          {/* FRONT — clean, no buttons */}
           <div className="flip-card-front rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:glow-red transition-all duration-300">
             <div className="relative h-full w-full overflow-hidden group">
               <img src={event.image} alt={event.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
@@ -227,14 +265,6 @@ const EventCard = ({ event, onSelect }: {event: EventData;onSelect: (e: EventDat
                 <span className={`inline-block rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-wider ${event.category === "technical" ? "bg-primary/20 text-primary border-primary/30" : "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"}`}>
                   {event.category}
                 </span>
-              </div>
-              <div className="absolute top-3 right-3 flex flex-col gap-1.5">
-                <a href={event.registerLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="rounded-full bg-primary/90 backdrop-blur px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-primary-foreground flex items-center gap-1 hover:bg-primary hover:glow-red transition-all hover:scale-105">
-                  Register <ExternalLink className="w-3 h-3" />
-                </a>
-                <a href={event.whatsappLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="rounded-full bg-emerald-600/90 backdrop-blur px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-white flex items-center gap-1 hover:bg-emerald-500 transition-all hover:scale-105">
-                  <MessageCircle className="w-3 h-3" /> Join Group
-                </a>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <h3 className="font-display text-sm font-bold uppercase tracking-wide text-foreground text-glow-subtle">{event.title}</h3>
@@ -264,17 +294,16 @@ const EventCard = ({ event, onSelect }: {event: EventData;onSelect: (e: EventDat
                 <a href={event.whatsappLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="flex items-center justify-center gap-2 w-full rounded-lg bg-emerald-600 py-2 text-xs font-bold uppercase tracking-wider text-white text-center transition-all hover:bg-emerald-500 hover:scale-[1.02]">
                   <MessageCircle className="w-3 h-3" /> Join Group
                 </a>
-                <button onClick={(e) => {e.stopPropagation();onSelect(event);}} className="w-full rounded-lg border border-primary/30 bg-primary/10 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary/20">
+                <button onClick={(e) => {e.stopPropagation(); onSelect(event);}} className="w-full rounded-lg border border-primary/30 bg-primary/10 py-2 text-xs font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary/20">
                   View Full Details
                 </button>
-                <p className="text-center text-[9px] text-muted-foreground uppercase tracking-wider">Click card to flip back</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>);
-
+    </>
+  );
 };
 
 /* ═══════ Events Section ═══════ */
@@ -305,8 +334,8 @@ const EventsSection = () => {
         <EventCard key={event.title} event={event} onSelect={setSelectedEvent} />
         )}
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default EventsSection;

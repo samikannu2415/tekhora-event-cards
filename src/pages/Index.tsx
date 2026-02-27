@@ -50,7 +50,8 @@ const Index = () => {
           <img
             src={logo}
             alt="Zen-IT-Trix Logo"
-            className="w-52 h-52 sm:w-64 sm:h-64 mx-auto drop-shadow-[0_0_35px_hsla(0,85%,50%,0.6)] invert brightness-200" />
+            className="w-72 h-72 sm:w-96 sm:h-96 mx-auto drop-shadow-[0_0_50px_hsla(0,85%,50%,0.7)] brightness-110 hue-rotate-[-10deg] saturate-200"
+            style={{ filter: 'brightness(1.1) saturate(2) sepia(1) hue-rotate(-30deg) drop-shadow(0 0 50px hsla(0,85%,50%,0.7))' }} />
 
 
           <div className="flex items-center justify-center gap-2 text-primary">
@@ -70,6 +71,10 @@ const Index = () => {
           </p>
 
           <CountdownTimer />
+
+          <p className="font-display text-lg sm:text-2xl font-bold uppercase tracking-[0.25em] text-primary/80">
+            Event Day — 10.03.2026
+          </p>
 
           <div className="flex flex-wrap gap-4 justify-center pt-4">
             <a href="#events" className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-bold uppercase tracking-wider text-primary-foreground transition-all hover:glow-red-strong hover:scale-105">

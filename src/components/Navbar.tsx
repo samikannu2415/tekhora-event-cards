@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto max-w-7xl flex items-center justify-between px-4 py-3 sm:px-6">
-        <a href="#home" className="text-lg sm:text-xl font-black uppercase tracking-wider text-[#eee1d2] font-[mono]">ANNAPOORANA ENGINEERING COLLEGE
+        <a href="#home" className="text-lg font-black uppercase tracking-wider font-[mono] text-yellow-400 sm:text-2xl">ANNAPOORANA ENGINEERING COLLEGE
 
         </a>
 

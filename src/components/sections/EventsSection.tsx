@@ -254,7 +254,7 @@ const EventCard = ({ event, onSelect }: {event: EventData;onSelect: (e: EventDat
               <p className="text-[11px] leading-relaxed mb-3 line-clamp-3 text-primary-foreground">{event.description}</p>
               <div className="flex flex-wrap gap-2 text-[10px] text-muted-foreground mb-3">
                 {event.teamSize && <span className="flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5"><Users className="w-3 h-3" /> {event.teamSize}</span>}
-                {event.time && <span className="flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5"><Clock className="w-3 h-3" /> {event.time}</span>}
+                {event.time}
               </div>
               {event.coordinator && <p className="flex items-center gap-1 mb-3 text-primary-foreground text-sm"><Phone className="w-3 h-3 text-primary" /> {event.coordinator}</p>}
               <div className="mt-auto space-y-2">

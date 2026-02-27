@@ -6,37 +6,37 @@ import EventsSection from "@/components/sections/EventsSection";
 import logo from "@/assets/logo.png";
 
 const contactCards = [
-  {
-    title: "Event Coordinators",
-    icon: Phone,
-    items: [
-      "Chandru – 6382055872",
-      "Gayathiri – 8838484319",
-      "Mohammed Arif – 9092629484",
-      "Rubin – 9080672157",
-      "Balaji – 9566086804",
-      "Kamalash – 9150474716",
-    ],
-  },
-  {
-    title: "Location",
-    icon: MapPin,
-    items: [
-      "Annapoorana Engineering College",
-      "Salem – Namakkal Highway",
-      "Periyaseeragapadi, Salem – 636308",
-      "Tamil Nadu, India",
-    ],
-  },
-  {
-    title: "Get in Touch",
-    icon: Mail,
-    items: [
-      "info@annapoorana.ac.in",
-      "Phone: 0427 – 2477777",
-    ],
-  },
-];
+{
+  title: "Event Coordinators",
+  icon: Phone,
+  items: [
+  "Chandru – 6382055872",
+  "Gayathiri – 8838484319",
+  "Mohammed Arif – 9092629484",
+  "Rubin – 9080672157",
+  "Balaji – 9566086804",
+  "Kamalash – 9150474716"]
+
+},
+{
+  title: "Location",
+  icon: MapPin,
+  items: [
+  "Annapoorana Engineering College",
+  "Salem – Namakkal Highway",
+  "Periyaseeragapadi, Salem – 636308",
+  "Tamil Nadu, India"]
+
+},
+{
+  title: "Get in Touch",
+  icon: Mail,
+  items: [
+  "info@annapoorana.ac.in",
+  "Phone: 0427 – 2477777"]
+
+}];
+
 
 const Index = () => {
   return (
@@ -50,8 +50,8 @@ const Index = () => {
           <img
             src={logo}
             alt="Zen-IT-Trix Logo"
-            className="w-52 h-52 sm:w-64 sm:h-64 mx-auto drop-shadow-[0_0_35px_hsla(0,85%,50%,0.6)] invert brightness-200"
-          />
+            className="w-52 h-52 sm:w-64 sm:h-64 mx-auto drop-shadow-[0_0_35px_hsla(0,85%,50%,0.6)] invert brightness-200" />
+
 
           <div className="flex items-center justify-center gap-2 text-primary">
             <Flame className="w-5 h-5 animate-pulse" />
@@ -65,7 +65,7 @@ const Index = () => {
             ZEN-IT-TRIX 1.O
           </h1>
 
-          <p className="font-display text-lg sm:text-xl font-bold uppercase tracking-[0.2em] text-primary/70">
+          <p className="font-display text-lg font-bold uppercase tracking-[0.2em] text-primary/70 sm:text-2xl">
             Department of Information Technology
           </p>
 
@@ -118,23 +118,23 @@ const Index = () => {
         </div>
 
         <div className="mx-auto max-w-5xl grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {contactCards.map((card) => (
-            <div key={card.title} className="rounded-xl border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300">
+          {contactCards.map((card) =>
+          <div key={card.title} className="border border-border bg-card/80 backdrop-blur p-6 space-y-4 hover:border-primary/40 hover:glow-red transition-all duration-300 rounded-2xl">
               <div className="flex items-center gap-3">
                 <div className="rounded-full bg-primary/20 p-2.5">
                   <card.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-display text-sm font-bold uppercase tracking-wider text-foreground">{card.title}</h3>
+                <h3 className="font-display text-sm font-bold uppercase tracking-wider text-primary">{card.title}</h3>
               </div>
               <div className="space-y-2">
-                {card.items.map((item, i) => (
-                  <p key={i} className="text-xs text-muted-foreground flex items-start gap-2">
+                {card.items.map((item, i) =>
+              <p key={i} className="flex items-start gap-2 text-sm text-primary-foreground">
                     <span className="text-primary font-bold mt-0.5">›</span> {item}
                   </p>
-                ))}
+              )}
               </div>
             </div>
-          ))}
+          )}
         </div>
       </section>
 
@@ -144,21 +144,21 @@ const Index = () => {
           <div className="grid gap-8 sm:grid-cols-3">
             <div className="space-y-3">
               <h4 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Annapoorana Engineering College</h4>
-              <p className="text-xs text-muted-foreground">Salem – Namakkal Highway, Tamil Nadu</p>
+              <p className="text-sm text-primary-foreground">Salem – Namakkal Highway, Tamil Nadu</p>
             </div>
             <div className="space-y-3">
               <h4 className="font-display text-sm font-bold uppercase tracking-wider text-primary">ZEN-IT-TRIX 1.O</h4>
-              <p className="text-xs text-muted-foreground">Department of Information Technology</p>
-              <p className="text-xs text-muted-foreground">Inaugural Technical Symposium</p>
+              <p className="text-primary-foreground text-sm">Department of Information Technology</p>
+              <p className="text-primary-foreground text-sm">Inaugural Technical Symposium</p>
             </div>
             <div className="space-y-3">
               <h4 className="font-display text-sm font-bold uppercase tracking-wider text-primary">Quick Links</h4>
               <div className="flex flex-col gap-1">
-                {["Home", "About", "Events", "Contact"].map((l) => (
-                  <a key={l} href={`#${l.toLowerCase()}`} className="text-xs text-muted-foreground hover:text-foreground transition-colors w-fit">
+                {["Home", "About", "Events", "Contact"].map((l) =>
+                <a key={l} href={`#${l.toLowerCase()}`} className="transition-colors w-fit text-primary-foreground text-sm">
                     {l}
                   </a>
-                ))}
+                )}
               </div>
             </div>
           </div>
@@ -169,8 +169,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>);
+
 };
 
 export default Index;
